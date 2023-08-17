@@ -30,10 +30,17 @@ def register():
 
     if 'username' not in data or 'email' not in data or 'password' not in data:
         return jsonify({'error': 'Missing fields'}), 400
-    
+
     username = data['username']
     email = data['email']
     password = data['password']
+
+    if User.query.filter_by(username=username).first():
+        return jsonify({'error':'The user with the following username is already exsists'}), 400
+    
+    if User.query.filter_by(email=email).first():
+        return jsonify({'error':'The user with the following email is already exsists'}), 400
+    
 
     new_user = User(username=username, email=email)
     new_user.set_password(password)
