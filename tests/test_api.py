@@ -1,9 +1,18 @@
+"""Unit tests for the API"""
+
 import logging
 
 from app import app
 
 
 def test_valid_post_request_to_register_user():
+    """
+    Test a valid POST request to register a user with proper data.
+
+    Returns:
+        None
+    """
+
     with app.test_client() as client:
 
         data={'username': 'testing',
@@ -14,12 +23,19 @@ def test_valid_post_request_to_register_user():
 
         response = client.post('/register', json=data)
 
-        logging.info(response.json['message'])
+        logging.info(response.json)
 
         assert response.status_code == 201
 
 
 def test_unvalid_post_request_to_register_user():
+    """
+    Test an invalid POST request to register a user with missing data.
+
+    Returns:
+        None
+    """
+
     with app.test_client() as client:
 
         data={'username': '',
