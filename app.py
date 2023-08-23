@@ -124,7 +124,7 @@ def register():
         except DatabaseError:
             response = jsonify({'error': 'DatabaseError'}), 500
         else:
-            response = jsonify({'error': 'An unexpected error occurred'}), 50
+            response = jsonify({'error': 'An unexpected error occurred'}), 500
         return response
 
     return response
