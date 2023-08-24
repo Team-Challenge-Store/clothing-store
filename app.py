@@ -142,14 +142,10 @@ if __name__ == '__main__':
 def login():
     """ 
     Handle user login 
-    returns:
-        If the user is already authenticated-redirect to the home page.
-        Home page if the request method is POST and the email and password are correct.
-        If the email or password is incorrect redirect login page with an error flash message.
-        If the request method is not POST, return the login page.
+    return a JSON response indicating success or error
     """
     if current_user.is_authenticated:
-        return redirect('/')
+        return jsonify({'message': 'The user is already logged in'}), 200
 
     if request.method == 'POST':
         email = request.form['email']
@@ -157,12 +153,11 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user is not None and user.check_password(password):
             login_user(user)
-            return redirect('/')
+            return jsonify({'message': 'Successfully logged'}), 200
 
-        flash('Email or Password is incorrect!')
-        return redirect('/login')
+        return jsonify({'error': 'Incorrect email or password'}), 401
 
-    return 'login page'
+    return jsonify({'message': 'Login page'}), 200
 
 
 @app.route('/logout')
@@ -170,9 +165,9 @@ def login():
 def logout():
     """ 
     Handle GET requests for the /logout url
-    return redirect to the home page
+    return a JSON response
     """
     logout_user()
-    return 'Logged out'
+    return jsonify({'message': 'Logged out'}), 201
 
 
