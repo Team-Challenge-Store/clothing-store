@@ -11,13 +11,15 @@ import os
 
 import re
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, redirect, flash, url_for
 
 from dotenv import load_dotenv
 
 from sqlalchemy.exc import DatabaseError
 
-from models import db, User
+from models import db, User, login
+
+from flask_login import current_user, login_required, login_user, logout_user
 
 
 load_dotenv()
@@ -31,6 +33,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:{DB_PASSWORD}@loc
 
 db.init_app(app)
 
+login.init_app(app)
+login.login_view = 'login'
 
 def is_password_valid(string_pass):
     """Verifies that password contains at leats one uppercase letter, lowercase letter, number,
@@ -132,3 +136,38 @@ def register():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+    """ 
+    Handle user login 
+    return a JSON response indicating success or error
+    """
+    if current_user.is_authenticated:
+        return jsonify({'message': 'The user is already logged in'}), 200
+
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = User.query.filter_by(email=email).first()
+        if user is not None and user.check_password(password):
+            login_user(user)
+            return jsonify({'message': 'Successfully logged'}), 200
+
+        return jsonify({'error': 'Incorrect email or password'}), 401
+
+    return jsonify({'message': 'Login page'}), 200
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    """ 
+    Handle GET requests for the /logout url
+    return a JSON response
+    """
+    logout_user()
+    return jsonify({'message': 'Logged out'}), 200
+
+
