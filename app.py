@@ -168,6 +168,6 @@ def logout():
     return a JSON response
     """
     logout_user()
-    return jsonify({'message': 'Logged out'}), 201
+    return jsonify({'message': 'Logged out'}), 200
 
 
