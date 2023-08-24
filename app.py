@@ -11,13 +11,15 @@ import os
 
 import re
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, redirect, flash, url_for
 
 from dotenv import load_dotenv
 
 from sqlalchemy.exc import DatabaseError
 
-from models import db, User
+from models import db, User, login
+
+from flask_login import current_user, login_required, login_user, logout_user
 
 
 load_dotenv()
@@ -31,6 +33,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:{DB_PASSWORD}@loc
 
 db.init_app(app)
 
+login.init_app(app)
+login.login_view = 'login'
 
 def is_password_valid(string_pass):
     """Verifies that password contains at leats one uppercase letter, lowercase letter, number,
@@ -132,3 +136,43 @@ def register():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+    """ 
+    Handle user login 
+    returns:
+        If the user is already authenticated-redirect to the home page.
+        Home page if the request method is POST and the email and password are correct.
+        If the email or password is incorrect redirect login page with an error flash message.
+        If the request method is not POST, return the login page.
+    """
+    if current_user.is_authenticated:
+        return redirect('/')
+
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = User.query.filter_by(email=email).first()
+        if user is not None and user.check_password(password):
+            login_user(user)
+            return redirect('/')
+
+        flash('Email or Password is incorrect!')
+        return redirect('/login')
+
+    return 'login page'
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    """ 
+    Handle GET requests for the /logout url
+    return redirect to the home page
+    """
+    logout_user()
+    return 'Logged out'
+
+

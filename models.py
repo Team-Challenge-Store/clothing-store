@@ -3,7 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from flask_login import UserMixin
+from flask_login import UserMixin, LoginManager
+
+login = LoginManager()
 
 db = SQLAlchemy()
 
@@ -50,3 +52,11 @@ class User(db.Model, UserMixin):
         returns: bool
         """
         return check_password_hash(self.password_hash, password)
+    
+@login.user_loader 
+def load_user(user_id):
+    """ 
+    Load a user from database based on the provided user ID 
+    return the User object with ID or None
+    """
+    return User.query.get(int(user_id))
