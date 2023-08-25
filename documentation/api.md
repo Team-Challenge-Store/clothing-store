@@ -86,11 +86,6 @@ The API does not require authentication for user registration.
       "error": "Incorrect email or password"
     }
     ```
-  - **Error (HTTP 200):**
-    ```json
-    {
-      "message": "The user is already logged in"
-    }
 
 ### Logout User
 - **URL:** `/logout`
