@@ -59,3 +59,43 @@ The API does not require authentication for user registration.
 - Ensure that you are sending valid JSON data in the request body.
 - Password must meet the specified complexity requirements.
 - Username and email must meet specified validation criteria.
+
+### Login User
+
+- **URL:** `/login`
+- **Method:** `GET`: Retrieve the login page. `POST`: Log in a user.
+- **Description:** Log in a registered user.
+- **Request Body (for POST method):**
+  ```json
+  {
+    "email": "valid-email@example.com",
+    "password": "string (8+ characters)"
+  }
+  ```
+- **Response:**
+
+  - **Success (HTTP 200):**
+    ```json
+    {
+      "message": "Successfully logged in",
+    }
+    ```
+  - **Error (HTTP 401):**
+    ```json
+    {
+      "error": "Incorrect email or password"
+    }
+    ```
+
+### Logout User
+- **URL:** `/logout`
+- **Method:** GET
+- **Description:** Log out the currently logged-in user.
+- **Response:**
+
+  - **Success (HTTP 200):**
+    ```json
+    {
+      "message": "Logged out"
+    }
+    ```

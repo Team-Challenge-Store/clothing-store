@@ -11,7 +11,7 @@ import os
 
 import re
 
-from flask import Flask, jsonify, request, redirect, flash, url_for
+from flask import Flask, jsonify, request
 
 from dotenv import load_dotenv
 
@@ -153,7 +153,7 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user is not None and user.check_password(password):
             login_user(user)
-            return jsonify({'message': 'Successfully logged'}), 200
+            return jsonify({'message': 'Successfully logged in'}), 200
 
         return jsonify({'error': 'Incorrect email or password'}), 401
 
