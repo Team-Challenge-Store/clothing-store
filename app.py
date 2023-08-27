@@ -36,6 +36,7 @@ db.init_app(app)
 login.init_app(app)
 login.login_view = 'login'
 
+
 def is_password_valid(string_pass):
     """Verifies that password contains at leats one uppercase letter, lowercase letter, number,
     and a special symbol.
@@ -134,11 +135,7 @@ def register():
     return response
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
-@app.route('/login', methods = ['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     """ 
     Handle user login 
@@ -171,3 +168,5 @@ def logout():
     return jsonify({'message': 'Logged out'}), 200
 
 
+if __name__ == '__main__':
+    app.run(debug=True)
