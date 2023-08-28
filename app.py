@@ -135,10 +135,6 @@ def register():
     return response
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
 @app.route('/login', methods = ['GET', 'POST'])
 def login_():
     """ 
@@ -170,3 +166,7 @@ def logout():
     """
     logout_user()
     return jsonify({'message': 'Logged out'}), 200
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
