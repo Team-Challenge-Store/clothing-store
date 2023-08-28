@@ -17,9 +17,10 @@ from dotenv import load_dotenv
 
 from sqlalchemy.exc import DatabaseError
 
+from flask_login import current_user, login_required, login_user, logout_user
+
 from models import db, User, login
 
-from flask_login import current_user, login_required, login_user, logout_user
 
 
 load_dotenv()
@@ -134,9 +135,9 @@ def register():
 
     return response
 
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+  
+@app.route('/login', methods = ['GET', 'POST'])
+def login_():
     """ 
     Handle user login 
     return a JSON response indicating success or error
