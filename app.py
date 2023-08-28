@@ -17,9 +17,10 @@ from dotenv import load_dotenv
 
 from sqlalchemy.exc import DatabaseError
 
+from flask_login import current_user, login_required, login_user, logout_user
+
 from models import db, User, login
 
-from flask_login import current_user, login_required, login_user, logout_user
 
 
 load_dotenv()
@@ -139,7 +140,7 @@ if __name__ == '__main__':
 
 
 @app.route('/login', methods = ['GET', 'POST'])
-def login():
+def login_():
     """ 
     Handle user login 
     return a JSON response indicating success or error
@@ -169,5 +170,3 @@ def logout():
     """
     logout_user()
     return jsonify({'message': 'Logged out'}), 200
-
-
