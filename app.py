@@ -22,7 +22,6 @@ from flask_login import current_user, login_required, login_user, logout_user
 from models import db, User, login
 
 
-
 load_dotenv()
 
 app = Flask(__name__)
@@ -50,7 +49,7 @@ def is_password_valid(string_pass):
     """
 
     reg_ex = r'^(?=.*?\d)(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[^A-Za-z\s0-9])'
-    return re.search(pattern=reg_ex, string=string_pass) is not None
+    return re.search(pattern=reg_ex, string=string_pass) is not None and len(string_pass) >= 8
 
 
 def are_unsername_and_email_valid(username, email):
@@ -113,7 +112,7 @@ def register():
     elif password != repeat_password:
         response = jsonify({'error': 'Passwords do not match'}), 400
     elif not is_password_valid(password):
-        message = ''''Your password must contain at leats one uppercase letter,
+        message = ''''Your password must contain at leats 8 characters, one uppercase letter,
         lowercase letter, number, and a special symbol.'''
         response = jsonify({'error': message}), 400
     else:
@@ -128,18 +127,16 @@ def register():
                                 'username': username,
                                 'email': email}), 201
         except DatabaseError:
-            response = jsonify({'error': 'DatabaseError'}), 500
-        else:
             response = jsonify({'error': 'An unexpected error occurred'}), 500
         return response
 
     return response
 
-  
-@app.route('/login', methods = ['GET', 'POST'])
+
+@app.route('/login', methods=['GET', 'POST'])
 def login_():
-    """ 
-    Handle user login 
+    """
+    Handle user login
     return a JSON response indicating success or error
     """
     if current_user.is_authenticated:
@@ -161,7 +158,7 @@ def login_():
 @app.route('/logout')
 @login_required
 def logout():
-    """ 
+    """
     Handle GET requests for the /logout url
     return a JSON response
     """
