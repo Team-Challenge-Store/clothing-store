@@ -143,8 +143,9 @@ def login_():
         return jsonify({'message': 'The user is already logged in'}), 200
 
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
+        data = request.get_json()
+        email = data['email']
+        password = data['password']
         user = User.query.filter_by(email=email).first()
         if user is not None and user.check_password(password):
             login_user(user)
