@@ -234,5 +234,76 @@ def confirm_email(token):
 
 app.register_blueprint(accounts_bp)
 
+
+@app.route('/change_password', methods=['GET', 'POST'])
+@login_required
+def change_password():
+    if request.method == 'POST':
+        current_password = request.form['current_password']
+        new_password = request.form['new_password']
+        retype_password = request.form['retype_password']
+
+        if current_user.check_password(current_password):
+            if new_password == retype_password:
+                current_user.set_password(new_password)
+                db.session.commit()
+                return jsonify({'message': 'Password changed successfully'}), 200
+            else:
+                return jsonify({'error': 'New passwords do not match'}), 400
+        else:
+            return jsonify({'error': 'Current password is incorrect'}), 400
+        
+    return jsonify({'message': 'Change password page'}), 200
+
+
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset_password():
+    if request.method == 'POST':
+        email = request.form['email']
+
+        user = User.query.filter_by(email=email).first()
+
+        if user:
+            token = generate_token(user.email)
+            reset_url = url_for("reset_password_confirm", token=token, _external=True)
+
+            subject = 'Password Reset Request'
+            template = f"Click the following link to reset your password: <a href='{reset_url}'>Reset Password</a>"
+            send_email(email, subject, template)
+            return jsonify({'message': 'Password reset email sent'}), 200
+        else:
+            return jsonify({'error': 'No user with that email found'}), 404
+    return jsonify({'message': 'Reset password page'})
+
+
+@app.route('/reset_password_confirm/<token>', methods=['GET', 'POST'])
+def reset_password_confirm(token):
+    try:
+        email = confirm_token(token)
+    except:
+        return jsonify('The reset link is invalid or has expired.', 'danger')
+
+    user = User.query.filter_by(email=email).first()
+
+    if user:
+        if request.method == 'POST':
+            # Check if 'new_password' and 'retype_password' are in the form data
+            if 'new_password' in request.form and 'retype_password' in request.form:
+                new_password = request.form['new_password']
+                retype_password = request.form['retype_password']
+
+                if new_password == retype_password:
+                    # Update the user's password
+                    user.set_password(new_password)
+                    db.session.commit()
+                    return jsonify({'message': 'Password reset successfully'}), 200
+                else:
+                    return jsonify({'error': 'New passwords do not match'}), 400
+
+        return render_template('reset_password_confirm.html')
+    else:
+        return jsonify({'error': 'No user with that email found'}), 404
+
+
 if __name__ == '__main__':
     app.run(debug=True)
