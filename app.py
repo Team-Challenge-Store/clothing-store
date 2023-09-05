@@ -57,7 +57,7 @@ app.secret_key = Config.SECRET_KEY
 db.init_app(app)
 
 login.init_app(app)
-login.login_view = 'login'
+login.login_view = 'login_'
 
 accounts_bp = Blueprint("accounts", __name__)
 mail = Mail(app)
@@ -197,8 +197,8 @@ def login_():
         if user is not None and user.check_password(password):
             login_user(user)
             return jsonify({'message': 'Successfully logged in'}), 200
-
-        return jsonify({'error': 'Incorrect email or password'}), 401
+        else:
+            return jsonify({'error': 'Incorrect email or password'}), 401
 
     return jsonify({'message': 'Login page'}), 200
 
