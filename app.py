@@ -300,7 +300,7 @@ def reset_password_confirm(token):
                 else:
                     return jsonify({'error': 'New passwords do not match'}), 400
 
-        return render_template('reset_password_confirm.html')
+        return jsonify({'reset_password_confirm page'})
     else:
         return jsonify({'error': 'No user with that email found'}), 404
 
