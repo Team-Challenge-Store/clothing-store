@@ -239,9 +239,10 @@ app.register_blueprint(accounts_bp)
 @login_required
 def change_password():
     if request.method == 'POST':
-        current_password = request.form['current_password']
-        new_password = request.form['new_password']
-        retype_password = request.form['retype_password']
+        data = request.get_json()
+        current_password = data['current_password']
+        new_password = data['new_password']
+        retype_password = data['retype_password']
 
         if current_user.check_password(current_password):
             if new_password == retype_password:
