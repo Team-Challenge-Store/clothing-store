@@ -85,6 +85,7 @@ def test_invalid_post_request_to_login_user():
 
         assert response.status_code == 401
 
+
 def test_get_request_to_logout_user():
     """
     Test a valid GET request to logout a user
