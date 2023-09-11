@@ -246,9 +246,13 @@ def change_password():
 
         if current_user.check_password(current_password):
             if new_password == retype_password:
-                current_user.set_password(new_password)
-                db.session.commit()
-                return jsonify({'message': 'Password changed successfully'}), 200
+                if is_password_valid(new_password):
+                    current_user.set_password(new_password)
+                    db.session.commit()
+                    return jsonify({'message': 'Password changed successfully'}), 200
+                else: 
+                    message = '''Your password must contain at least one uppercase letter, lowercase letter, number, and a special symbol.'''
+                    return jsonify({'error': message}), 400
             else:
                 return jsonify({'error': 'New passwords do not match'}), 400
         else:
