@@ -99,3 +99,69 @@ The API does not require authentication for user registration.
       "message": "Logged out"
     }
     ```
+
+### Change Password
+
+- **URL:** `/change_password`
+- **Method:** `GET`: Retrieve the change password page. `POST`: Change user password.
+- **Description:** Change password.
+- **Request Body (for POST method):**
+  ```json
+  {
+    "current_password": "string (8+ characters)",
+    "new_password": "string (8+ characters)",
+    "retype_password": "string (8+ characters)"
+  }
+  ```
+- **Response:**
+
+  - **Success (HTTP 200):**
+    ```json
+    {
+      "message": "Password changed successfully",
+    }
+    ```
+  - **Error (HTTP 400):**
+    ```json
+    {
+      "error": "New passwords do not match"
+    }
+    ```
+  - **Error (HTTP 400):**
+    ```json
+    {
+      "error": "Current password is incorrect"
+    }
+    ```
+
+### Reset Password
+
+- **URL:** `/reset_password`
+- **Method:** `GET`: Retrieve the reset password page. `POST`: Send email with reset password link.
+- **Description:** Reset password.
+- **Request Body (for POST method):**
+  ```json
+  {
+    "email": "valid-email@example.com",
+  }
+  ```
+- **Response:**
+
+  - **Success (HTTP 200):**
+    ```json
+    {
+      "message": "Password reset email sent",
+    }
+    ```
+  - **Error (HTTP 500):**
+    ```json
+    {
+      "error": "Email sending failed"
+    }
+    ```
+  - **Error (HTTP 404):**
+    ```json
+    {
+      "error": "No user with that email found"
+    }
+    ```
