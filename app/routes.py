@@ -7,72 +7,28 @@ Please note that this module is a preliminary version and should be extended to 
 features such as login, product management, and more.
 """
 
-import os
 
 import re
 
 from datetime import datetime
 
-from flask import Flask, jsonify, request, Blueprint, render_template, url_for
-
-from dotenv import load_dotenv
+from flask import jsonify, request, render_template, url_for, Blueprint
 
 from sqlalchemy.exc import DatabaseError
 
-from models import db, User, login
+from app.models import db, User
 
 from flask_login import current_user, login_required, login_user, logout_user
 
-from flask_migrate import Migrate
+from app.utils.decorators import logout_required
 
-from utils.decorators import logout_required
+from app.accounts.token import confirm_token, generate_token
 
-from accounts.token import confirm_token, generate_token
+from app.utils.mail import send_email
 
-from flask_mail import Mail
 
-from flask_mail import Message
-
-from config import Config
-
-load_dotenv()
-
-app = Flask(__name__)
-migrate = Migrate(app, db)
-
-app.config['MAIL_SERVER'] = Config.MAIL_SERVER
-app.config['MAIL_PORT'] = Config.MAIL_PORT
-app.config['MAIL_DEFAULT_SENDER'] = Config.MAIL_DEFAULT_SENDER
-app.config['MAIL_USERNAME'] = Config.MAIL_USERNAME
-app.config['MAIL_PASSWORD'] = Config.MAIL_PASSWORD
-app.config['MAIL_USE_TLS'] = Config.MAIL_USE_TLS
-app.config['MAIL_USE_SSL'] = Config.MAIL_USE_SSL
-
-DB_PASSWORD = os.environ.get('DB_PWD')
-DB_NAME = os.environ.get('DB_NAME')
-
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:{DB_PASSWORD}@localhost/{DB_NAME}'
-app.secret_key = Config.SECRET_KEY
-
-db.init_app(app)
-
-login.init_app(app)
-login.login_view = 'login_'
-
+main_bp = Blueprint('main', __name__)
 accounts_bp = Blueprint("accounts", __name__)
-mail = Mail(app)
-app.mail = mail
-
-
-def send_email(to, subject, template):
-    msg = Message(
-        subject,
-        recipients=[to],
-        html=template,
-        sender=Config.MAIL_DEFAULT_SENDER,
-    )
-    app.mail.send(msg)
-
 
 def is_password_valid(string_pass):
     """Verifies that password contains at leats one uppercase letter, lowercase letter, number,
@@ -108,7 +64,7 @@ def are_unsername_and_email_valid(username, email):
     return True
 
 
-@app.route('/')
+@main_bp.route('/')
 def index():
     """Returns the main page"""
     return '<h1> Test environment </h1>'
@@ -178,7 +134,7 @@ def register():
     return response
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@main_bp.route('/login', methods=['GET', 'POST'])
 @logout_required
 def login_():
     """ 
@@ -203,7 +159,7 @@ def login_():
     return jsonify({'message': 'Login page'}), 200
 
 
-@app.route('/logout')
+@main_bp.route('/logout')
 @login_required
 def logout():
     """ 
@@ -232,10 +188,8 @@ def confirm_email(token):
         return jsonify("You have confirmed your account. Thanks!")
 
 
-app.register_blueprint(accounts_bp)
 
-
-@app.route('/change_password', methods=['GET', 'POST'])
+@main_bp.route('/change_password', methods=['GET', 'POST'])
 @login_required
 def change_password():
     if request.method == 'POST':
@@ -261,7 +215,7 @@ def change_password():
     return jsonify({'message': 'Change password page'}), 200
 
 
-@app.route('/reset_password', methods=['GET', 'POST'])
+@main_bp.route('/reset_password', methods=['GET', 'POST'])
 def reset_password():
     if request.method == 'POST':
         data = request.get_json()
@@ -285,7 +239,7 @@ def reset_password():
     return jsonify({'message': 'Reset password page'})
 
 
-@app.route('/reset_password_confirm/<token>', methods=['GET', 'POST'])
+@main_bp.route('/reset_password_confirm/<token>', methods=['GET', 'POST'])
 def reset_password_confirm(token):
     try:
         email = confirm_token(token)
@@ -313,6 +267,3 @@ def reset_password_confirm(token):
     else:
         return jsonify({'error': 'No user with that email found'}), 404
     
-
-if __name__ == '__main__':
-    app.run(debug=True)
