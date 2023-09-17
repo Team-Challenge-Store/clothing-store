@@ -149,9 +149,11 @@ def login_():
 
         email = data['email']
         password = data['password']
+        remember = data.get('remember')
+
         user = User.query.filter_by(email=email).first()
         if user is not None and user.check_password(password):
-            login_user(user)
+            login_user(user, remember=remember)
             return jsonify({'message': 'Successfully logged in'}), 200
         else:
             return jsonify({'error': 'Incorrect email or password'}), 401
@@ -199,16 +201,19 @@ def change_password():
         retype_password = data['retype_password']
 
         if current_user.check_password(current_password):
-            if new_password == retype_password:
-                if is_password_valid(new_password):
-                    current_user.set_password(new_password)
-                    db.session.commit()
-                    return jsonify({'message': 'Password changed successfully'}), 200
-                else: 
-                    message = '''Your password must contain at least one uppercase letter, lowercase letter, number, and a special symbol.'''
-                    return jsonify({'error': message}), 400
-            else:
-                return jsonify({'error': 'New passwords do not match'}), 400
+            if new_password != current_password:
+                if new_password == retype_password:
+                    if is_password_valid(new_password):
+                        current_user.set_password(new_password)
+                        db.session.commit()
+                        return jsonify({'message': 'Password changed successfully'}), 200
+                    else: 
+                        message = '''Your password must contain at least one uppercase letter, lowercase letter, number, and a special symbol.'''
+                        return jsonify({'error': message}), 400
+                else:
+                    return jsonify({'error': 'New passwords do not match'}), 400
+            else: 
+                return jsonify({'error': 'New password cannot be the same as the current password'}), 400
         else:
             return jsonify({'error': 'Current password is incorrect'}), 400
         
