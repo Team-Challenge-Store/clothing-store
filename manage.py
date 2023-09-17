@@ -1,7 +1,7 @@
 from flask.cli import FlaskGroup
 
-from app import app
-from models import User, db
+from app.routes import app
+from app.models import User, db
 
 import getpass
 from datetime import datetime
