@@ -86,6 +86,12 @@ The API does not require authentication for user registration.
       "error": "Incorrect email or password"
     }
     ```
+  
+  ## Notes
+
+- In the request body, provide the authentication data, including the "remember" option with the boolean value. For example: "remember": true. 
+If the authentication is successful and the "remember" parameter is set to true, method should create a "remember_token" cookie on the client side. Now, end the current session and execute a new request, such as a request to an authenticated resource.
+App should detect the "remember_token" cookie, and if it's valid, it should automatically authenticate the user without requiring them to log in again.
 
 ### Logout User
 - **URL:** `/logout`
@@ -125,6 +131,12 @@ The API does not require authentication for user registration.
     ```json
     {
       "error": "New passwords do not match"
+    }
+    ```
+  - **Error (HTTP 400):**
+    ```json
+    {
+      "error": "New password cannot be the same as the current password"
     }
     ```
   - **Error (HTTP 400):**
