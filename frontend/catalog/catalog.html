@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/style.min.css">
+   <title>Каталог</title>
+</head>
+
+<body>
+   <main class="catalog">
+      <div class="catalog__header">
+         <!-- Навігаційна стежка -->
+         <div class="breadcrumbs">
+            <ul class="breadcrumbs__list">
+               <li class="breadcrumbs__list-item">
+                  <a href="#" class="breadcrumbs__link">
+                     <span class="breadcrumbs__text">Головна</span>
+                  </a>
+               </li>
+               <li class="breadcrumbs__list-item">
+                  <a href="#" class="breadcrumbs__link">
+                     <span class="breadcrumbs__text">Каталог</span>
+                  </a>
+               </li>
+            </ul>
+         </div>
+
+         <!-- Загальні параметри каталогу -->
+         <div class="catalog__header-params params">
+            <!-- Фільтрація товару -->
+            <div class="params__filter">
+               <details open id="filter-details" class="catalog__filter-details filter">
+                  <summary class="filter__header">
+                     <span class="filter__header-title">Фільтр</span>
+                  </summary>
+                  <div class="filter__content">
+                  </div>
+               </details>
+            </div>
+
+            <!-- Сортування товару -->
+            <div class="params__sort ">
+               <details class="params__sort-details sort">
+                  <summary class="sort__radios">
+                     <input type="radio" name="sort" id="sort-default" title="Сортування" checked>
+                     <input type="radio" name="sort" id="sort-expensive" title="Спочатку дорожчі">
+                     <input type="radio" name="sort" id="sort-cheaper" title="Спочатку дешевші">
+                     <input type="radio" name="sort" id="sort-popular" title="Спочатку популярні">
+                  </summary>
+                  <ul class="sort__list">
+                     <li class="sort__list-item">
+                        <label for="sort-expensive" class="sort__list-label">Спочатку дорожчі</label>
+                     </li>
+                     <li class="sort__list-item">
+                        <label for="sort-cheaper" class="sort__list-label">Спочатку дешевші</label>
+                     </li>
+                     <li class="sort__list-item">
+                        <label for="sort-popular" class="sort__list-label">Спочатку популярні</label>
+                     </li>
+                  </ul>
+               </details>
+            </div>
+
+         </div>
+      </div>
+
+
+      <!-- Список товарів -->
+      <div class="goods">
+         <div id="goods-list" class="goods__list">
+            <!-- Картка товару -->
+            <div class="goods__list-card card">
+               <div class="card-img">
+                  <a href="#" class="card-img__container">
+                     <img src="./img/test-img.png" alt="test-img">
+                  </a>
+                  <div class="card-img__badge">
+                     <span id="badge-new">нове</span>
+                  </div>
+               </div>
+               <div class="card-info">
+                  <a href="#"  class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+                  <span class="card-info__price" id="goods-price">1 600 грн.</span>
+                  <a href="#" class="card-info__colors">+11 кольорів</a>
+               </div>
+            </div>
+
+            <!-- В решті карток або змінений badge/додано стару ціну, або просто для прикладу -->
+            <div class="goods__list-card card">
+               <div class="card-img">
+                  <a href="#" class="card-img__container">
+                     <img src="./img/test-img.png" alt="test-img">
+                  </a>
+                  <div class="card-img__badge">
+                     <span id="badge-sale">ціну знижено</span>
+                  </div>
+               </div>
+               <div class="card-info">
+                  <a href="#" class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+                  <span class="card-info__price" id="goods-price">1 600 грн. <span class="old-price" id="goods-price-old">2 600 грн.</span></span>
+                  <a href="#" class="card-info__colors">+11 кольорів</a>
+               </div>
+            </div>
+
+            <div class="goods__list-card card">
+               <div class="card-img">
+                  <a href="#"  class="card-img__container">
+                     <img src="./img/test-img.png" alt="test-img">
+                  </a>
+                  <div class="card-img__badge">
+                     <span id="badge-custom">під замовлення</span>
+                  </div>
+               </div>
+               <div class="card-info">
+                  <a href="#"  class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+                  <span class="card-info__price" id="goods-price">1 600 грн.</span>
+                  <a href="#" class="card-info__colors">+11 кольорів</a>
+               </div>
+            </div>
+
+            <div class="goods__list-card card">
+               <div class="card-img">
+                  <a href="#"  class="card-img__container">
+                     <img src="./img/test-img.png" alt="test-img">
+                  </a>
+               </div>
+               <div class="card-info">
+                  <a href="#"  class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+                  <span class="card-info__price" id="goods-price">1 600 грн.</span>
+                  <a href="#" class="card-info__colors">+11 кольорів</a>
+               </div>
+            </div>
+
+            <div class="goods__list-card card">
+               <div class="card-img">
+                  <a href="#"  class="card-img__container">
+                     <img src="./img/test-img.png" alt="test-img">
+                  </a>
+               </div>
+               <div class="card-info">
+                  <a href="#"  class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+                  <span class="card-info__price" id="goods-price">1 600 грн.</span>
+                  <a href="#" class="card-info__colors">+11 кольорів</a>
+               </div>
+            </div>
+
+            <div class="goods__list-card card">
+               <div class="card-img">
+                  <a href="#"  class="card-img__container">
+                     <img src="./img/test-img.png" alt="test-img">
+                  </a>
+               </div>
+               <div class="card-info">
+                  <a href="#"  class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+                  <span class="card-info__price" id="goods-price">1 600 грн.</span>
+                  <a href="#" class="card-info__colors">+11 кольорів</a>
+               </div>
+            </div>
+
+            <div class="goods__list-card card">
+               <div class="card-img">
+                  <a href="#"  class="card-img__container">
+                     <img src="./img/test-img.png" alt="test-img">
+                  </a>
+               </div>
+               <div class="card-info">
+                  <a href="#"  class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+                  <span class="card-info__price" id="goods-price">1 600 грн.</span>
+                  <a href="#" class="card-info__colors">+11 кольорів</a>
+               </div>
+            </div>
+
+            <div class="goods__list-card card">
+               <div class="card-img">
+                  <a href="#"  class="card-img__container">
+                     <img src="./img/test-img.png" alt="test-img">
+                  </a>
+               </div>
+               <div class="card-info">
+                  <a href="#"  class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+                  <span class="card-info__price" id="goods-price">1 600 грн.</span>
+                  <a href="#" class="card-info__colors">+11 кольорів</a>
+               </div>
+            </div>
+         </div>
+         <!-- Кнопка завантаження решти товарів -->
+         <button class="goods__btn-load-more">Показати ще</button>
+         
+         <!-- Пагінація -->
+         <div>
+         </div>
+      </div>
+   </main>
+   <script async src="./js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+.catalog{
+   display: flex;
+   flex-direction: column;
+   gap: 25px;
+   padding: 0 5.7%;
+   &__header{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 70px;
+      
+      &-params{
+         display: flex;
+         justify-content: space-between;
+      }
+   }
+}
+

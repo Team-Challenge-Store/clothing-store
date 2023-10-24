@@ -1,0 +1,71 @@
+.filter {
+   position: relative;
+   width: 240px;
+   color: #678193;
+   cursor: pointer;
+
+   &__content {
+      margin-top: 20px;
+      height: calc(100vh - 20px); 
+      overflow-y: scroll;
+      scrollbar-color: #E2E2E2 #678193;
+      scrollbar-width: auto;
+
+      @supports (scrollbar-gutter: stable) {
+         overflow: auto;    
+         scrollbar-gutter: stable;  
+         }
+
+      &::-webkit-scrollbar {
+         width: 4px;
+         background-color: #E2E2E2;
+         border-radius: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+         background-color: #678193;
+         border-radius: 5px;
+      }
+   }
+
+   &[open] {
+      z-index: 5;
+   }
+
+   &[open] &__header:before {
+      content: '';
+      display: block;
+      background: transparent;
+      position: fixed;
+      top: 0;
+      left: 0;
+   }
+
+   &[open] &__header:after {
+      transform: rotate(180deg);
+   }
+
+   &__header {
+      list-style: none;
+      border-bottom: 1px solid #F2F5F7;
+      padding: 10px 0;
+
+      &-title {
+         color: #466377;
+         font-weight: 500;
+      }
+
+      &:after {
+         content: '▼';
+         display: inline-block;
+         position: absolute;
+         right: 0;
+         top: 0;
+         padding: 10px;
+         font-size: 8px;
+         color: #678193;
+         transform-origin: center center;
+         transition: transform ease-in-out 100ms
+      }
+   }
+}
