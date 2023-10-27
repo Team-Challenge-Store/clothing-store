@@ -4,10 +4,8 @@
    font-size: 12px;
    color: #678193;
    border-bottom: 1px solid #C2D1D9;
-
-
 	&[open] {
-		z-index: 1;
+		z-index: 5;
 	}
 
 	&[open] &__radios:before{

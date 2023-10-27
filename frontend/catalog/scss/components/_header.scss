@@ -6,12 +6,12 @@
    &__header{
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      height: 70px;
-      
+      gap: 10px;      
       &-params{
          display: flex;
-         justify-content: space-between;
+         justify-content: flex-end;
+         width: 80%;
+         margin-left: auto;
       }
    }
 }

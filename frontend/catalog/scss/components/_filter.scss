@@ -1,20 +1,26 @@
+
 .filter {
+   background-color: #FFF;
    position: relative;
    width: 240px;
    color: #678193;
    cursor: pointer;
 
    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
       margin-top: 20px;
-      height: calc(100vh - 20px); 
+      height: calc(100vh - 100px);
+      font-size: 12px;
       overflow-y: scroll;
       scrollbar-color: #E2E2E2 #678193;
       scrollbar-width: auto;
 
       @supports (scrollbar-gutter: stable) {
-         overflow: auto;    
-         scrollbar-gutter: stable;  
-         }
+         overflow: auto;
+         scrollbar-gutter: stable;
+      }
 
       &::-webkit-scrollbar {
          width: 4px;
@@ -26,7 +32,28 @@
          background-color: #678193;
          border-radius: 5px;
       }
+
    }
+      .filter-btn {
+         padding: 15px 15px 0 0;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         gap: 8px;
+         font-size: 12px;
+
+         &__submit {
+            background-color: #678193;
+            padding: 10px;
+            color: #FFF;
+            font-weight: 500;
+         }
+
+         &__clear{
+            color: rgba(103, 129, 147, 0.80);
+            background: transparent;
+         }
+      }
 
    &[open] {
       z-index: 5;

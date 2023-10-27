@@ -4,8 +4,9 @@
          display: inline-flex;
          vertical-align: top;
          list-style: none;
-
+         
          a, span {
+            cursor: pointer;
             display: inline-block;
             color: #678193;
             font-size: 14px;
@@ -37,9 +38,10 @@
             margin: 0;
          }
 
-         &:last-child{
-            font-weight: 500;
+         &:last-child .breadcrumbs__text {
+            text-decoration: underline;
          }
       }
    }
 }
+
