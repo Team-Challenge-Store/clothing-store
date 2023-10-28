@@ -89,6 +89,9 @@ body {
   margin-left: auto;
 }
 
+.breadcrumbs {
+  z-index: 1;
+}
 .breadcrumbs__list-item {
   display: inline-flex;
   vertical-align: top;
@@ -450,7 +453,7 @@ body {
 }
 
 .params__selected {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 5px;
   flex-grow: 1;
@@ -476,6 +479,10 @@ body {
   border: 1px solid #CEDAE1;
   background-color: transparent;
   cursor: pointer;
+}
+
+.selected {
+  display: flex;
 }
 
 .goods {

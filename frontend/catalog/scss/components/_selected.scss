@@ -1,5 +1,5 @@
 .params__selected {
-   display: flex;
+   display: none;
    flex-direction: column;
    gap: 5px;
    flex-grow: 1;
@@ -29,4 +29,7 @@
          cursor: pointer;
       }
    }
+}
+.selected{
+   display: flex;
 }
