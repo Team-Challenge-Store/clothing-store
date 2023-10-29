@@ -1,0 +1,26 @@
+// підключення шрифтів
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:regular,500,700&display=swap");
+
+body {
+	font-family: "Ubuntu";
+	color: #a1aeb7;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.5; /* 24px */
+}
+
+@import "_reset"; // підключення стилів обнулення
+@import "_header";
+
+// обмежуючий контейнер
+[class*="__container"] {
+	padding-left: 72px;
+	padding-right: 72px;
+}
+
+main {
+	background-color: #231559;
+	color: #a1aeb7;
+	font-size: 18px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clothing store</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<header class="header">
+		<!-- верхня частина шапки -->
+		<div class="header__top">
+			<div class="header__container header__container--top">
+				<div class="header__phone phone-header">
+					<!-- клік на посилання ініціює дзівонок  -->
+					<a href="tel:+3800000000" class="phone-header__link">
+						<img src="icons/phone.svg" alt="Phone">
+						<span>+38 044 343 343 343</span>
+					</a>
+					<!-- є підозра, що треба буде зробити попап, де користувач вводитиме свій номер -->
+					<a href="#" type="phone-header__call-me-button">Передзвоніть мені</a>
+				</div>
+				<p class="header__message">Безкоштовна доставка по Україні</p>
+				<!-- зміна мови при натисненні -->
+				<select class="header__lang-change">
+					<option value="ua" selected>Укр</option>
+					<option value="en">Eng</option>
+				</select>
+			</div>
+		</div>
+		<!-- нижня частина шапки -->
+		<div class="header__bottom">
+			<div class="header__container header__container--bottom">
+				<!-- лого зазвичай є посиланням на головну -->
+				<a href="#" class="header__logo"><img src="icons/logo.svg" alt="Logo"></a>
+				<div class="header__menu menu">
+					<!-- обгортка меню, що буде з'являтись при натисненні на бургер -->
+					<nav class="menu__body">
+						<ul class="menu__list">
+							<li class="menu__item"><a href="#" class="menu__link">Каталог</a></li>
+							<li class="menu__item"><a href="#" class="menu__link">Персоналізація</a></li>
+							<li class="menu__item"><a href="#" class="menu__link">Популярне</a></li>
+							<li class="menu__item"><a href="#" class="menu__link">Допомога</a></li>
+							<li class="menu__item"><a href="#" class="menu__link">Про нас</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="header__actions actions-header">
+					<!-- форма пошуку -->
+					<form action="#" class="actions-header__search search-header">
+						<input type="text" name="q" placeholder="Пошук" class="search-header__input">
+						<!-- при натисненні на кнопку відбувається пошуковий запит -->
+						<button type="submit" class="search-header__button">
+							<img src="icons/search.svg" alt="Search">
+						</button>
+					</form>
+					<!-- перехід на особистий профіль -->
+					<a href="#" class="actions-header__link">
+						<img src="icons/account.svg" alt="Account">
+					</a>
+					<!-- перехід в корзину -->
+					<a href="#" class="actions-header__link">
+						<img src="icons/basket.svg" alt="Basket">
+					</a>
+					<!-- Кнопка-бургер. При натисненні відкриває .menu__body -->
+					<button type="button" class="icon-burger"><span></span></button>
+				</div>
+			</div>
+		</div>
+	</header>
+	<main class="main">
+	</main>
+	<footer class="footer"></footer>
+</body>
+
+</html>
