@@ -1,0 +1,35 @@
+.params__selected {
+   display: none;
+   flex-direction: column;
+   gap: 5px;
+   flex-grow: 1;
+   margin-left: 50px;
+
+
+   &-title {
+      padding: 10px 0;
+      color: #678193;
+      font-size: 14px;
+      font-weight: 700;
+   }
+
+   &-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      button{
+         color:#678193;
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         padding: 4px 10px;
+         border: 1px solid #CEDAE1;
+         background-color: transparent;
+         cursor: pointer;
+      }
+   }
+}
+.selected{
+   display: flex;
+}

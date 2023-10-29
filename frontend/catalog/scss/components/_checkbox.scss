@@ -1,0 +1,47 @@
+.checkbox{
+   &__item{
+      padding: 5px 0;
+      &-input{
+         display: none;
+      }
+      &-input:checked+&-label::after{
+         background: url('../img/checked.png') center / 10px 10px no-repeat #678193;
+      }
+      &-label{
+         position: relative;
+         display: inline-flex;
+         align-items: center;
+         cursor: pointer;
+         white-space: nowrap;
+
+         &::before{
+            content: "";
+            align-self: flex-start;
+            margin-right: 10px;
+            flex: 0 0 18px;
+            height: 18px;
+            background-color: #fff;
+            border: 1px solid #678193;
+         }
+
+         &::after{
+            content: "";
+            width: 19px;
+            height: 19px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: bg 0.3s ease 0s;
+         }
+      }
+
+      &-btn{
+         background-color: transparent;
+         color: #678193;
+         font-size: 10px;
+         font-weight: 500;
+         -webkit-text-decoration-line: underline;
+                 text-decoration-line: underline;
+      }
+   }
+}

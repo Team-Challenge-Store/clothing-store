@@ -1,0 +1,114 @@
+.goods {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   padding: 25px 0;
+
+   &__filter{
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 40px 0 0 5.7%;
+   }
+
+   &__list {
+      width: 76%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-column-gap: 25px;
+      grid-row-gap: 20px;
+
+      .card {
+
+         &-img {
+            position: relative;
+            background-color: #F2F5F7;
+            padding: 10px;
+            border-radius: 2px;
+            border: 1px solid #C2D1D9;
+
+            &__container {
+               max-width: 100%;
+               height: 365px;
+               display: block;
+
+               img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+               }
+            }
+
+            &__badge {
+               background: #678193;
+               position: absolute;
+               top: 0;
+               color: #FFF;
+               font-size: 12px;
+               padding: 4px 10px;
+               margin-top: 10px;
+               &-bottom{
+                  position: absolute;
+                  bottom:  0;
+                  background: #678193;
+                  color: #FFF;
+                  padding: 4px 10px;
+                  margin-bottom: 10px;
+               }
+            }
+
+            &__favourite{
+               position: absolute;
+               top: 0;
+               right: 0;
+               padding: 10px;
+               button{
+                  background: transparent;
+               }
+            }
+         }
+
+         &-info {
+            display: flex;
+            flex-direction: column;
+            padding-top: 8px;
+            line-height: 24px;
+            font-size: 18px;
+            color: #505D68;
+
+            a {
+               color: #505D68;
+
+            }
+
+            &__price {
+               font-weight: 700;
+            }
+
+            .old-price {
+               font-size: 14px;
+               font-weight: 400;
+               text-decoration: line-through;
+            }
+
+            &__colors {
+               font-size: 10px;
+            }
+         }
+      }
+   }
+
+   &__btn-load-more {
+      padding: 15px 0;
+      align-self: center;
+      background-color: transparent;
+      color: #678193;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration-line: underline;
+   }
+}
+
+.filter-closed {
+   width: 100%;
+}
