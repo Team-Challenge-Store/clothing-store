@@ -23,11 +23,20 @@
 					<a href="#" type="phone-header__call-me-button">Передзвоніть мені</a>
 				</div>
 				<p class="header__message">Безкоштовна доставка по Україні</p>
-				<!-- зміна мови при натисненні -->
-				<select class="header__lang-change">
-					<option value="ua" selected>Укр</option>
-					<option value="en">Eng</option>
-				</select>
+				<!-- зміна мови при натисненні на .lang-change__label -->
+				<!-- якщо details має атрибут open, і відбувся клік повз .lang-change__list то він має закритись-->
+				<!-- клік на input::after має відкрити .lang-change__list -->
+				<!-- вибрану мову необхдно видалити з .lang-change__list-->
+				<details class="header__lang-change lang-change">
+					<summary class="lang-change__radios">
+						<input type="radio" name="lang" id="ukrainian" title="Укр" checked>
+						<input type="radio" name="lang" id="english" title="Eng">
+					</summary>
+					<ul class="lang-change__list">
+						<li class="lang-change__item"><label for="ukrainian" class="lang-change__label">Укр</label></li>
+						<li class="lang-change__item"><label for="english" class="lang-change__label">Eng</label></li>
+					</ul>
+				</details>
 			</div>
 		</div>
 		<!-- нижня частина шапки -->

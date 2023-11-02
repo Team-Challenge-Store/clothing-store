@@ -153,6 +153,96 @@ button {
           column-gap: 8px;
 }
 
+.lang-change {
+  position: relative;
+  min-width: 49px;
+}
+.lang-change[open] {
+  z-index: 5;
+}
+.lang-change[open] .lang-change__list {
+  opacity: 1;
+}
+.lang-change[open] .lang-change__radios:after {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.lang-change__radios {
+  position: relative;
+  padding: 8px 0;
+  counter-reset: radios;
+  cursor: pointer;
+  list-style: none;
+}
+.lang-change__radios::-webkit-details-marker {
+  display: none;
+}
+.lang-change__radios:after {
+  content: "▼";
+  font-size: 8px;
+  color: #787676;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 12px;
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transition: -webkit-transform ease-in-out 100ms;
+  transition: -webkit-transform ease-in-out 100ms;
+  transition: transform ease-in-out 100ms;
+  transition: transform ease-in-out 100ms, -webkit-transform ease-in-out 100ms;
+}
+.lang-change__radios:focus {
+  outline: none;
+}
+.lang-change__radios input[type=radio]:checked {
+  display: inline;
+  color: #678193;
+  font-weight: 500;
+  display: block;
+}
+.lang-change__radios input[type=radio] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: none;
+}
+.lang-change__radios input[type=radio]:after {
+  content: attr(title);
+  display: inline;
+}
+.lang-change__list {
+  width: 100%;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid rgba(103, 129, 147, 0.15);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.lang-change__item {
+  padding: 10px 10px;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+@media (any-hover: hover) {
+  .lang-change__item:hover {
+    background-color: #678193;
+    color: #fff;
+  }
+}
+.lang-change__label {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .menu__list {
   display: -webkit-box;
   display: -ms-flexbox;
