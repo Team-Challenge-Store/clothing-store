@@ -139,14 +139,6 @@ body {
 .sort[open] {
   z-index: 5;
 }
-.sort[open] .sort__radios:before {
-  content: "";
-  display: block;
-  background: transparent;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
 .sort[open] .sort__radios:after {
   transform: rotate(180deg);
 }
@@ -300,14 +292,6 @@ body {
   padding-right: 15px;
   color: #678193;
   cursor: pointer;
-}
-.filter-selection[open] .filter-selection__header:before {
-  content: "";
-  display: block;
-  background: transparent;
-  position: fixed;
-  top: 0;
-  left: 0;
 }
 .filter-selection[open] .filter-selection__header:after {
   transform: rotate(180deg);
