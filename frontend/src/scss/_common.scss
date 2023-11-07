@@ -1,0 +1,61 @@
+// * тут містяться стилі елементів, які повторюються
+//=============================================================================
+// * базові стилі
+[class*="-ibg"] {
+	position: relative;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+[class*="-ibg--contain"] {
+	img {
+		object-fit: contain;
+	}
+}
+//=============================================================================
+.page {
+	// відступ між секціями
+	& > *:not(:last-child) {
+		margin-bottom: 40px;
+	}
+
+	// .page__intro
+	&__intro {
+	}
+	// .page__index-catalog
+	&__index-catalog {
+	}
+	// .page__advantages
+	&__advantages {
+	}
+}
+//=============================================================================
+.title {
+	color: #505d68;
+	font-weight: 700;
+	line-height: 1.8;
+	// .title--large
+	&--large {
+		font-size: 36px;
+	}
+	// .title--small
+	&--small {
+		font-size: 24px;
+	}
+}
+.button {
+	display: inline-block;
+	min-width: 118px;
+	padding: 10px;
+	border: 1px solid #45494b;
+
+	color: #45494b;
+	text-align: center;
+	font-size: 12px;
+	text-transform: uppercase;
+}

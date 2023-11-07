@@ -1,0 +1,139 @@
+.intro {
+	position: relative;
+
+	// .intro__background
+	&__background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+		}
+	}
+	// .intro__container
+	&__container {
+		min-height: 100vh;
+		min-height: 100svh;
+
+		padding-top: calc(112px + 250px);
+		padding-bottom: 156px;
+	}
+	// .intro__content
+	&__content {
+		max-width: 563px;
+	}
+	// .intro__title
+	&__title {
+		&:not(:last-child) {
+			margin-bottom: 12px;
+		}
+	}
+	// .intro__text
+	&__text {
+		&:not(:last-child) {
+			margin-bottom: 64px;
+		}
+	}
+	// .intro__button
+	&__button {
+	}
+	// .intro__media-button
+	&__media-button {
+		span {
+		}
+	}
+}
+//=============================================================================
+.index-catalog {
+	// .index-catalog__container
+	&__container {
+	}
+	// .index-catalog__title
+	&__title {
+		&:not(:last-child) {
+			margin-bottom: 12px;
+		}
+	}
+	// .index-catalog__items
+	&__items {
+		display: grid;
+		gap: 12px 18px;
+
+		// * заготовка під адаптив
+		grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+		grid-auto-flow: dense;
+	}
+	// .index-catalog__item
+	&__item {
+	}
+}
+.item-index-catalog {
+	display: grid;
+	gap: 10px;
+
+	// .item-index-catalog__image-ibg
+	&__image-ibg {
+		padding-top: 111.111111%; /* 300/270 */
+		img {
+			object-fit: contain;
+		}
+	}
+	// .item-index-catalog__link
+	&__link {
+		color: rgba(0, 0, 0, 0.8);
+		font-family: Inter;
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 1.5;
+		text-decoration-line: underline;
+		justify-self: start;
+	}
+	// .item-index-catalog--wide
+	&--wide {
+		grid-column: span 2;
+		.item-index-catalog__image-ibg {
+			padding-top: 53.763441%; /* 300/558 */
+		}
+	}
+}
+//=============================================================================
+.advantages {
+	// .advantages__container
+	&__container {
+		display: grid;
+		justify-content: space-between;
+		grid-template-columns: 320px 1fr;
+		gap: 64px;
+	}
+	// .advantages__body
+	&__body {
+	}
+	// .advantages__title
+	&__title {
+		line-height: 1.25; /* 45/36 */
+		&:not(:last-child) {
+			margin-bottom: 28px;
+		}
+	}
+	// .advantages__text
+	&__text {
+	}
+	// .advantages__link
+	&__link {
+		color: #505d68;
+		text-decoration-line: underline;
+	}
+	// .advantages__image-ibg
+	&__image-ibg {
+		align-self: start;
+		padding-top: 63.829787%; /* 480/752 */
+	}
+}
