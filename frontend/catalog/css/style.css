@@ -139,10 +139,20 @@ body {
 .sort[open] {
   z-index: 5;
 }
+.sort__radios::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .sort[open] .sort__radios:after {
   transform: rotate(180deg);
 }
 .sort__radios {
+  position: relative;
   counter-reset: radios;
   padding: 10px 15px;
   cursor: pointer;

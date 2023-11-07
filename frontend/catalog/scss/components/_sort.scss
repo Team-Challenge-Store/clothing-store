@@ -8,12 +8,22 @@
 		z-index: 5;
 	}
 
+	&__radios::before{
+		content: "";
+		width: 100%;
+		height: 100%;
+		background: transparent;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
 
 	&[open] &__radios:after{
 		transform: rotate(180deg);
 	}
 
 	&__radios{
+		position: relative;
 		counter-reset: radios;
 		padding: 10px 15px;
 		cursor: pointer;
