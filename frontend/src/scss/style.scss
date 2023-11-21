@@ -1,0 +1,18 @@
+@import "./utils/reset";
+@import "./utils/fonts";
+
+@import "./components/catalog";
+@import "./components/breadcrumbs";
+@import "./components/sort";
+@import "./components/filter";
+@import "./components/filter-selection";
+@import "./components/price";
+@import "./components/checkbox";
+@import "./components/selected";
+@import "./components/goods";
+@import "./components/pagination";
+
+body{
+    font-family: "Ubuntu", sans-serif;
+}
+

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <!-- Підключення head. На кожній сторінці змінювати title -->
+    <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.min.css">
+   <title>Каталог</title>
+</head>
+
+<body>
+    
+    <main class="catalog">
+        <div class="catalog__header">
+            <!-- Навігаційна стежка -->
+<!-- цей елемент зустрічається і в інших сторінках, він застилізований універсально
+   я так зрозуміла, що користувач по лінкам може повертатися на попередні сторінки-->
+<div class="breadcrumbs">
+   <ul class="breadcrumbs__list">
+      <li class="breadcrumbs__list-item">
+         <a href="#" class="breadcrumbs__link">
+            <span class="breadcrumbs__text">Головна</span>
+         </a>
+      </li>
+      <li class="breadcrumbs__list-item">
+         <a href="#" class="breadcrumbs__link">
+            <span class="breadcrumbs__text">Каталог</span>
+         </a>
+      </li>
+   </ul>
+</div>
+            <div class="catalog__header-params params">
+                <!-- Вибрані фільтри -->
+<!-- цей блок має display: none, якщо немає вибраних товарів, 
+               якщо користувач вибрав щось з фільтру, то щоб це відобразити потрібно додати клас selected
+               він змінює display на flex
+               де знайти: scss/components/selected-->
+<div class="params__selected">
+   <div class="params__selected-title">
+      <span>Обрано</span>
+   </div>
+   <div class="params__selected-btns">
+      <!-- в цьому діві будуть відображатись всі вибрані фільтри у вигляді кнопок -->
+      <button>
+         <span>стать: жіноча</span>
+         <!-- якщо натиснути на img, то кнопка видаляється з діву
+                           можливо потрібно буде замінити img на svg -->
+         <img src="./img/close.png" alt="close" width="24" height="24">
+      </button>
+      <button>
+         <span>розмір: М</span>
+         <img src="./img/close.png" alt="close" width="24" height="24">
+      </button>
+   </div>
+</div>
+                <!-- Сортування товару -->
+<div class="params__sort">
+   <!-- де знайти: scss/components/sort -->
+   <details class="params__sort-details sort">
+      <!-- товари повинні змінюватись в залежності від того, що вибрав юзер 
+         юзер вибирає з випадаючого списку ul-->
+      <summary class="sort__radios">
+         <input type="radio" name="sort" id="sort-default" title="Сортування" checked>
+         <input type="radio" name="sort" id="sort-expensive" title="Спочатку дорожчі">
+         <input type="radio" name="sort" id="sort-cheaper" title="Спочатку дешевші">
+         <input type="radio" name="sort" id="sort-popular" title="Спочатку популярні">
+      </summary>
+      <ul class="sort__list">
+      <!--змінюються інпути в summary по id
+         тут є проблема зі стилями: слова встають одне під одним 
+         можна або обрізати і додавати "...", або збільшити розмір summary
+         потрібно буде уточнити у дизайнерів -->
+         <li class="sort__list-item">
+            <label for="sort-expensive" class="sort__list-label">Спочатку дорожчі</label>
+         </li>
+         <li class="sort__list-item">
+            <label for="sort-cheaper" class="sort__list-label">Спочатку дешевші</label>
+         </li>
+         <li class="sort__list-item">
+            <label for="sort-popular" class="sort__list-label">Спочатку популярні</label>
+         </li>
+      </ul>
+   </details>
+</div>
+            </div>
+        </div>
+
+        <div class="goods">
+            <!-- Фільтрація товару -->
+<!-- по дизайну повинно бути, якщо фільтр відкритий - список товарів по 3 товари в рядку
+            якщо закритий повинно бути 4 товари в рядку 
+            тут я використовувала js - якщо filter-details закритий, то до goods__list додається клас filter-closed(він по суті змінює розмір самого списку товарів)
+            можливо потрібно допрацювати саму логіку і відповідно стилі 
+            за замовчуванням фільтр відкритий-->
+<aside class="goods__filter">
+   <details open id="filter-details" class="goods__filter-details filter">
+      <!-- вся стилізація фільтру: scss/components/filter 
+                                             scss/components/checkbox
+                                             scss/components/filter-selection
+                                             scss/components/price-->
+      <summary class="filter__header">
+         <span class="filter__header-title">Фільтр</span>
+      </summary>
+      <form class="filter__form">
+         <!-- фільтр майже повністю складений з чекбоксів
+                        при вибраних чекбоксів повинні відображатись відповідні товари або по id, 
+                        або потрібно буде додати data до чекбоксів і товару і по ним фільтрувати-->
+         <div class="filter__content">
+            <!-- Всі категорії одягу -->
+            <div class="filter__content-checkbox checkbox">
+               <div class="checkbox__item">
+                  <input id="chefs-jacket" type="checkbox" class="checkbox__item-input">
+                  <label for="chefs-jacket" class="checkbox__item-label">
+                     <span>Кітелі кухаря</span>
+                  </label>
+               </div>
+               <div class="checkbox__item">
+                  <input id="apron" type="checkbox" class="checkbox__item-input">
+                  <label for="apron" class="checkbox__item-label">
+                     <span>Фартухи</span>
+                  </label>
+               </div>
+               <div class="checkbox__item">
+                  <input id="pants-and-overalls" type="checkbox" class="checkbox__item-input">
+                  <label for="pants-and-overalls" class="checkbox__item-label">
+                     <span>Штани і комбінезони</span>
+                  </label>
+               </div>
+               <div class="checkbox__item">
+                  <input id="textile" type="checkbox" class="checkbox__item-input">
+                  <label for="textile" class="checkbox__item-label">
+                     <span>Текстиль</span>
+                  </label>
+               </div>
+               <div class="checkbox__item">
+                  <input id="knitted-products" type="checkbox" class="checkbox__item-input">
+                  <label for="knitted-products" class="checkbox__item-label">
+                     <span>Вʼязані вироби</span>
+                  </label>
+               </div>
+               <div class="checkbox__item">
+                  <input id="hats" type="checkbox" class="checkbox__item-input">
+                  <label for="hats" class="checkbox__item-label">
+                     <span>Головні убори</span>
+                  </label>
+               </div>
+               <div class="checkbox__item">
+                  <input id="shirts" type="checkbox" class="checkbox__item-input">
+                  <label for="shirts" class="checkbox__item-label">
+                     <span>Сорочки</span>
+                  </label>
+               </div>
+               <div class="checkbox__item">
+                  <input id="outerwear" type="checkbox" class="checkbox__item-input">
+                  <label for="outerwear" class="checkbox__item-label">
+                     <span>Верхній одяг</span>
+                  </label>
+               </div>
+               <div class="checkbox__item">
+                  <input id="costumes" type="checkbox" class="checkbox__item-input">
+                  <label for="costumes" class="checkbox__item-label">
+                     <span>Костюми</span>
+                  </label>
+               </div>
+               <div class="checkbox__item">
+                  <input id="clothes-for-maids" type="checkbox" class="checkbox__item-input">
+                  <label for="clothes-for-maids" class="checkbox__item-label">
+                     <span>Одяг для покоївок</span>
+                  </label>
+               </div>
+               <div class="checkbox__item">
+                  <input id="promotions" type="checkbox" class="checkbox__item-input">
+                  <label for="promotions" class="checkbox__item-label">
+                     <span>Акції</span>
+                  </label>
+               </div>
+            </div>
+
+            <!-- Ціна -->
+            <!-- До цього елементу прописала js -->
+            <!-- застилізувати цей інпут чистим html/scss неможливо
+                           тому потрібно буде або якось використовувати написаний js, або придумати як реалізувати по-іншому -->
+            <details open class="filter__content-range filter-selection">
+               <summary class="filter-selection__header">
+                  <span class="filter-selection__header-title">Ціна</span>
+               </summary>
+               <div class="price">
+                  <div class="price__range-slider">
+                     <div class="slider">
+                        <div class="track"></div>
+                        <div class="range" style="left: 4.7%; right: 4.7%;"></div>
+                        <div class="thumb left" style="left: 4.7%;">
+                           <div class="price__value-min">330</div>
+                        </div>
+                        <div class="thumb right" style="right: 4.7%;">
+                           <div class="price__value-max">6630</div>
+                        </div>
+                     </div>
+                     <input type="range" name="price-min" id="input-left" min="0" max="7000" value="330" />
+                     <input type="range" name="price-max" id="input-right" min="0" max="7000" value="6630" />
+                  </div>
+               </div>
+            </details>
+
+            <!-- Стать -->
+            <details open class="filter__content-checkbox filter-selection">
+               <summary class="filter-selection__header">
+                  <span class="filter-selection__header-title">Стать</span>
+               </summary>
+               <div class="checkbox">
+                  <div class="checkbox__item">
+                     <input id="male" type="checkbox" class="checkbox__item-input">
+                     <label for="male" class="checkbox__item-label">
+                        <span>Чоловіча</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="female" type="checkbox" class="checkbox__item-input" checked>
+                     <label for="female" class="checkbox__item-label">
+                        <span>Жіноча</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="unisex" type="checkbox" class="checkbox__item-input">
+                     <label for="unisex" class="checkbox__item-label">
+                        <span>Унісекс </span>
+                     </label>
+                  </div>
+               </div>
+            </details>
+
+            <!-- Розмір -->
+            <details open class="filter__content-checkbox filter-selection">
+               <summary class="filter-selection__header">
+                  <span class="filter-selection__header-title">Розмір</span>
+               </summary>
+               <div class="checkbox">
+                  <div class="checkbox__item">
+                     <input id="size-universal" type="checkbox" class="checkbox__item-input">
+                     <label for="size-universal" class="checkbox__item-label">
+                        <span>універсальний</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="size-XS" type="checkbox" class="checkbox__item-input">
+                     <label for="size-XS" class="checkbox__item-label">
+                        <span>XS</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="size-S" type="checkbox" class="checkbox__item-input">
+                     <label for="size-S" class="checkbox__item-label">
+                        <span>S</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="size-M" type="checkbox" class="checkbox__item-input" checked>
+                     <label for="size-M" class="checkbox__item-label">
+                        <span>M</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="size-L" type="checkbox" class="checkbox__item-input">
+                     <label for="size-L" class="checkbox__item-label">
+                        <span>L</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="size-XL" type="checkbox" class="checkbox__item-input">
+                     <label for="size-XL" class="checkbox__item-label">
+                        <span>XL</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="size-XXL" type="checkbox" class="checkbox__item-input">
+                     <label for="size-XXL" class="checkbox__item-label">
+                        <span>XXL</span>
+                     </label>
+                  </div>
+               </div>
+            </details>
+
+            <!-- Колір -->
+            <details open class="filter__content-checkbox filter-selection">
+               <summary class="filter-selection__header">
+                  <span class="filter-selection__header-title">Колір</span>
+               </summary>
+               <div class="checkbox">
+                  <div class="checkbox__item">
+                     <input id="color-white" type="checkbox" class="checkbox__item-input">
+                     <label for="color-white" class="checkbox__item-label">
+                        <span>Білий</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-light-blue" type="checkbox" class="checkbox__item-input">
+                     <label for="color-light-blue" class="checkbox__item-label">
+                        <span>Блакитний</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-yellow" type="checkbox" class="checkbox__item-input">
+                     <label for="color-yellow" class="checkbox__item-label">
+                        <span>Жовтий</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-green" type="checkbox" class="checkbox__item-input">
+                     <label for="color-green" class="checkbox__item-label">
+                        <span>Зелений</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-brown" type="checkbox" class="checkbox__item-input">
+                     <label for="color-brown" class="checkbox__item-label">
+                        <span>Коричневий</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-milk" type="checkbox" class="checkbox__item-input">
+                     <label for="color-milk" class="checkbox__item-label">
+                        <span>Молочний</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-orange" type="checkbox" class="checkbox__item-input">
+                     <label for="color-orange" class="checkbox__item-label">
+                        <span>Помаранчевий</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-pink" type="checkbox" class="checkbox__item-input">
+                     <label for="color-pink" class="checkbox__item-label">
+                        <span>Рожевий</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-gray" type="checkbox" class="checkbox__item-input">
+                     <label for="color-gray" class="checkbox__item-label">
+                        <span>Сірий</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-red" type="checkbox" class="checkbox__item-input">
+                     <label for="color-red" class="checkbox__item-label">
+                        <span>Червоний</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-blue" type="checkbox" class="checkbox__item-input">
+                     <label for="color-blue" class="checkbox__item-label">
+                        <span>Синій</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-black" type="checkbox" class="checkbox__item-input">
+                     <label for="color-black" class="checkbox__item-label">
+                        <span>Чорний</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="color-other" type="checkbox" class="checkbox__item-input">
+                     <label for="color-other" class="checkbox__item-label">
+                        <span>Інші</span>
+                     </label>
+                  </div>
+
+                  <button class="checkbox__item-btn">Показати менше</button>
+               </div>
+            </details>
+
+            <!-- Тканина -->
+            <details open class="filter__content-checkbox filter-selection">
+               <summary class="filter-selection__header">
+                  <span class="filter-selection__header-title">Тканина</span>
+               </summary>
+               <div class="checkbox">
+                  <div class="checkbox__item">
+                     <input id="fabric-wool" type="checkbox" class="checkbox__item-input">
+                     <label for="fabric-wool" class="checkbox__item-label">
+                        <span>Вовна</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="fabric-cotton" type="checkbox" class="checkbox__item-input">
+                     <label for="fabric-cotton" class="checkbox__item-label">
+                        <span>Бавовна</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="fabric-polyamide" type="checkbox" class="checkbox__item-input">
+                     <label for="fabric-polyamide" class="checkbox__item-label">
+                        <span>Поліамід</span>
+                     </label>
+                  </div>
+                  <button class="checkbox__item-btn">Показати більше</button>
+               </div>
+            </details>
+
+            <!-- Рукав -->
+            <details open class="filter__content-checkbox filter-selection">
+               <summary class="filter-selection__header">
+                  <span class="filter-selection__header-title">Рукав</span>
+               </summary>
+               <div class="checkbox">
+                  <div class="checkbox__item">
+                     <input id="sleeve-long" type="checkbox" class="checkbox__item-input">
+                     <label for="sleeve-long" class="checkbox__item-label">
+                        <span>Довгий</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="sleeve-short" type="checkbox" class="checkbox__item-input">
+                     <label for="sleeve-short" class="checkbox__item-label">
+                        <span>Короткий</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="sleeve-3-4" type="checkbox" class="checkbox__item-input">
+                     <label for="sleeve-3-4" class="checkbox__item-label">
+                        <span>3/4</span>
+                     </label>
+                  </div>
+                  <div class="checkbox__item">
+                     <input id="sleeve-other" type="checkbox" class="checkbox__item-input">
+                     <label for="sleeve-other" class="checkbox__item-label">
+                        <span>Інше</span>
+                     </label>
+                  </div>
+               </div>
+            </details>
+         </div>
+
+         <!-- Кнопки застосування -->
+         <div class="filter__form-btns filter-btn">
+            <button type="submit" class="filter-btn__submit">Примінити</button>
+            <button type="reset" class="filter-btn__clear">Очистити все</button>
+         </div>
+      </form>
+   </details>
+</aside>
+            <div id="goods-list" class="goods__list">
+                <!-- тут цикл по карткам -->
+                <!-- Картка товару -->
+<div class="goods__list-card card">
+   <div class="card-img">
+      <!-- фото товару, помістила в посилання бо припускаю що при натисканні повинно перейти в картку товару -->
+      <a href="#" class="card-img__container">
+         <img src="./img/test-img.png" alt="test-img">
+      </a>
+      <!-- бейдж товару змінюється, або немає взагалі -->
+      <div class="card-img__badge">
+         <span id="badge-new">нове</span>
+      </div>
+      <!-- при натисканні на цю кнопку товар повинен додаватись до "фаворитів"
+         потрібно уточнити у дизайнерів чи повинна кнопка зафарбовуватись
+         якщо так, то я зміню кнопку -->
+      <div class="card-img__favourite">
+         <button><img src="./img/favourite.png" alt="favourite"></button>
+      </div>
+   </div>
+   <div class="card-info">
+      <a href="#" class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+      <span class="card-info__price" id="goods-price">1 600 грн.</span>
+      <!-- про вибір кольорів також потрібно уточнити, що це має бути чи кнопка чи посилання 
+         зробила поки посиланням-->
+      <a href="#" class="card-info__colors">+11 кольорів</a>
+   </div>
+</div>
+
+<!-- В решті карток або змінений badge/додано стару ціну, або просто для прикладу -->
+<div class="goods__list-card card">
+   <div class="card-img">
+      <a href="#" class="card-img__container">
+         <img src="./img/test-img.png" alt="test-img">
+      </a>
+      <div class="card-img__badge">
+         <span id="badge-sale">ціну знижено</span>
+      </div>
+      <div class="card-img__favourite">
+         <button><img src="./img/favourite.png" alt="favourite"></button>
+      </div>
+      <div class="card-img__badge-bottom">
+         <span id="badge-sale">-10%</span>
+      </div>
+   </div>
+   <div class="card-info">
+      <a href="#" class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+      <span class="card-info__price" id="goods-price">1 600 грн. <span class="old-price"
+            id="goods-price-old">2 600 грн.</span></span>
+      <a href="#" class="card-info__colors">+11 кольорів</a>
+   </div>
+</div>
+
+<div class="goods__list-card card">
+   <div class="card-img">
+      <a href="#" class="card-img__container">
+         <img src="./img/test-img.png" alt="test-img">
+      </a>
+      <div class="card-img__badge">
+         <span id="badge-custom">під замовлення</span>
+      </div>
+      <div class="card-img__favourite">
+         <button><img src="./img/favourite.png" alt="favourite"></button>
+      </div>
+   </div>
+   <div class="card-info">
+      <a href="#" class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+      <span class="card-info__price" id="goods-price">1 600 грн.</span>
+      <a href="#" class="card-info__colors">+11 кольорів</a>
+   </div>
+</div>
+
+<div class="goods__list-card card">
+   <div class="card-img">
+      <a href="#" class="card-img__container">
+         <img src="./img/test-img.png" alt="test-img">
+      </a>
+      <div class="card-img__favourite">
+         <button><img src="./img/favourite.png" alt="favourite"></button>
+      </div>
+   </div>
+   <div class="card-info">
+      <a href="#" class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+      <span class="card-info__price" id="goods-price">1 600 грн.</span>
+      <a href="#" class="card-info__colors">+11 кольорів</a>
+   </div>
+</div>
+
+<div class="goods__list-card card">
+   <div class="card-img">
+      <a href="#" class="card-img__container">
+         <img src="./img/test-img.png" alt="test-img">
+      </a>
+      <div class="card-img__favourite">
+         <button><img src="./img/favourite.png" alt="favourite"></button>
+      </div>
+   </div>
+   <div class="card-info">
+      <a href="#" class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+      <span class="card-info__price" id="goods-price">1 600 грн.</span>
+      <a href="#" class="card-info__colors">+11 кольорів</a>
+   </div>
+</div>
+
+<div class="goods__list-card card">
+   <div class="card-img">
+      <a href="#" class="card-img__container">
+         <img src="./img/test-img.png" alt="test-img">
+      </a>
+      <div class="card-img__favourite">
+         <button><img src="./img/favourite.png" alt="favourite"></button>
+      </div>
+   </div>
+   <div class="card-info">
+      <a href="#" class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+      <span class="card-info__price" id="goods-price">1 600 грн.</span>
+      <a href="#" class="card-info__colors">+11 кольорів</a>
+   </div>
+</div>
+
+<div class="goods__list-card card">
+   <div class="card-img">
+      <a href="#" class="card-img__container">
+         <img src="./img/test-img.png" alt="test-img">
+      </a>
+      <div class="card-img__favourite">
+         <button><img src="./img/favourite.png" alt="favourite"></button>
+      </div>
+   </div>
+   <div class="card-info">
+      <a href="#" class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+      <span class="card-info__price" id="goods-price">1 600 грн.</span>
+      <a href="#" class="card-info__colors">+11 кольорів</a>
+   </div>
+</div>
+
+<div class="goods__list-card card">
+   <div class="card-img">
+      <a href="#" class="card-img__container">
+         <img src="./img/test-img.png" alt="test-img">
+      </a>
+      <div class="card-img__favourite">
+         <button><img src="./img/favourite.png" alt="favourite"></button>
+      </div>
+   </div>
+   <div class="card-info">
+      <a href="#" class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+      <span class="card-info__price" id="goods-price">1 600 грн.</span>
+      <a href="#" class="card-info__colors">+11 кольорів</a>
+   </div>
+</div>
+
+<div class="goods__list-card card">
+   <div class="card-img">
+      <a href="#" class="card-img__container">
+         <img src="./img/test-img.png" alt="test-img">
+      </a>
+      <div class="card-img__favourite">
+         <button><img src="./img/favourite.png" alt="favourite"></button>
+      </div>
+   </div>
+   <div class="card-info">
+      <a href="#" class="card-info__title" id="goods-name">Кітель кухаря чоловічий</a>
+      <span class="card-info__price" id="goods-price">1 600 грн.</span>
+      <a href="#" class="card-info__colors">+11 кольорів</a>
+   </div>
+</div> <!-- Вся стилізація карток, підключила для прикладу-->
+            </div>
+            <!-- Кнопка завантаження решти товарів -->
+<!-- є підозра що ця кнопка має працювати з пагінацією:
+            якщо юзер на 1 сторінці, долистав до кінця списку і натиснув на цю кнопку, 
+            то завантажуються решта товарів і пагінація змінюється на 2
+            якщо товари закінчились, то кнопка зникає-->
+<button class="goods__btn-load-more">Показати ще</button>
+        </div>
+
+        <!-- Пагінація -->
+<div class="pagination">
+   <ul class="pagination__list">
+      <li class="pagination__arrow"><img src="./img/btn-arrow.png" alt="btn" width="26"></li>
+      <li class="pagination__item" data-page="1">1</li>
+      <li class="pagination__item active" data-page="2">2</li>
+      <li class="pagination__item" data-page="3">...</li>
+      <li class="pagination__item" data-page="4">15</li>
+      <li class="pagination__item" data-page="5">16</li>
+      <li class="pagination__arrow"><img src="./img/btn-arrow.png" alt="btn" width="26"></li>
+   </ul>
+</div>
+    </main>
+    
+    <script async src="./js/script.js"></script>
+</body>
+</html>

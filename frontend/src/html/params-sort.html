@@ -1,0 +1,29 @@
+<!-- Сортування товару -->
+<div class="params__sort">
+   <!-- де знайти: scss/components/sort -->
+   <details class="params__sort-details sort">
+      <!-- товари повинні змінюватись в залежності від того, що вибрав юзер 
+         юзер вибирає з випадаючого списку ul-->
+      <summary class="sort__radios">
+         <input type="radio" name="sort" id="sort-default" title="Сортування" checked>
+         <input type="radio" name="sort" id="sort-expensive" title="Спочатку дорожчі">
+         <input type="radio" name="sort" id="sort-cheaper" title="Спочатку дешевші">
+         <input type="radio" name="sort" id="sort-popular" title="Спочатку популярні">
+      </summary>
+      <ul class="sort__list">
+      <!--змінюються інпути в summary по id
+         тут є проблема зі стилями: слова встають одне під одним 
+         можна або обрізати і додавати "...", або збільшити розмір summary
+         потрібно буде уточнити у дизайнерів -->
+         <li class="sort__list-item">
+            <label for="sort-expensive" class="sort__list-label">Спочатку дорожчі</label>
+         </li>
+         <li class="sort__list-item">
+            <label for="sort-cheaper" class="sort__list-label">Спочатку дешевші</label>
+         </li>
+         <li class="sort__list-item">
+            <label for="sort-popular" class="sort__list-label">Спочатку популярні</label>
+         </li>
+      </ul>
+   </details>
+</div>

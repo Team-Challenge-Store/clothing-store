@@ -1,0 +1,23 @@
+<!-- Вибрані фільтри -->
+<!-- цей блок має display: none, якщо немає вибраних товарів, 
+               якщо користувач вибрав щось з фільтру, то щоб це відобразити потрібно додати клас selected
+               він змінює display на flex
+               де знайти: scss/components/selected-->
+<div class="params__selected">
+   <div class="params__selected-title">
+      <span>Обрано</span>
+   </div>
+   <div class="params__selected-btns">
+      <!-- в цьому діві будуть відображатись всі вибрані фільтри у вигляді кнопок -->
+      <button>
+         <span>стать: жіноча</span>
+         <!-- якщо натиснути на img, то кнопка видаляється з діву
+                           можливо потрібно буде замінити img на svg -->
+         <img src="./img/close.png" alt="close" width="24" height="24">
+      </button>
+      <button>
+         <span>розмір: М</span>
+         <img src="./img/close.png" alt="close" width="24" height="24">
+      </button>
+   </div>
+</div>

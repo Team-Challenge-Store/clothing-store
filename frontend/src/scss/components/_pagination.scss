@@ -1,0 +1,42 @@
+.pagination {
+   align-self: center;
+   padding-bottom: 50px;
+   
+   &__list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      list-style: none;
+   }
+
+   &__arrow{
+      cursor: pointer;
+   }
+
+   &__arrow:last-child{
+      img{
+         transform: rotate(180deg);
+      }
+   }
+
+   &__item {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #678193;
+      color: #678193;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+
+      &:nth-child(4){
+         border: none;
+      }
+
+   }
+   .active {
+      background: #678193;
+      color: #fff;
+   }
+}
