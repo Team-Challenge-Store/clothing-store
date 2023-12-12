@@ -1,0 +1,32 @@
+.testimonials {
+	&__container {
+		display: grid;
+		row-gap: 12px;
+	}
+	&__item {
+		max-width: 558px;
+	}
+}
+.item-testimonial {
+	display: flex;
+	align-items: flex-start;
+	&__image-ibg {
+		flex-basis: 27.778%; /* 155/558 */
+		padding-top: 38%; /* 212/558 */
+	}
+	&__body {
+		flex-basis: calc(100% - 27.778%);
+		padding-left: 20px;
+	}
+}
+.body-testimonial {
+	display: grid;
+	gap: 4px;
+
+	&__person-name {
+		font-family: Inter;
+		font-size: 18px;
+		font-weight: 500;
+		color: rgba(88, 88, 88, 0.8);
+	}
+}

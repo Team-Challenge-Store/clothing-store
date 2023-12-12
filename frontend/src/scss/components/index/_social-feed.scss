@@ -1,0 +1,15 @@
+.social-feed {
+	&__container {
+		display: grid;
+		gap: 26px;
+	}
+	&__item {
+		max-width: 269px;
+	}
+}
+.item-feed {
+	&__image-ibg {
+		display: block;
+		padding-top: 96.654275%; /* 260/269 */
+	}
+}

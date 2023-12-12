@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="zxx">
 
 <head>
 	<meta charset="UTF-8">
@@ -10,89 +10,76 @@
 
 <body>
 	<header class="header">
-		<!-- верхня частина шапки -->
-		<div class="header__top">
-			<div class="header__container header__container--top">
-				<div class="header__phone phone-header">
-					<!-- клік на посилання ініціює дзівонок  -->
-					<a href="tel:+3800000000" class="phone-header__link">
-						<img src="icons/phone.svg" alt="Phone">
-						<span>+38 044 343 343 343</span>
-					</a>
-					<!-- є підозра, що треба буде зробити попап, де користувач вводитиме свій номер -->
-					<a href="#" type="phone-header__call-me-button">Передзвоніть мені</a>
-				</div>
-				<p class="header__message">Безкоштовна доставка по Україні</p>
-				<!-- зміна мови при натисненні на .lang-change__label -->
-				<!-- якщо details має атрибут open, і відбувся клік повз .lang-change__list то він має закритись-->
-				<!-- клік на input::after має відкрити .lang-change__list -->
-				<!-- вибрану мову необхдно видалити з .lang-change__list-->
-				<details class="header__lang-change lang-change">
-					<summary class="lang-change__radios">
-						<input type="radio" name="lang" id="ukrainian" title="Укр" checked>
-						<input type="radio" name="lang" id="english" title="Eng">
-					</summary>
-					<ul class="lang-change__list">
-						<li class="lang-change__item"><label for="ukrainian" class="lang-change__label">Укр</label></li>
-						<li class="lang-change__item"><label for="english" class="lang-change__label">Eng</label></li>
-					</ul>
-				</details>
+		<div class="header__container top-header">
+			<div class="header__phone phone-header">
+				<a href="tel:+3800000000" class="phone-header__link">
+					<img src="icons/phone.svg" alt="Phone">
+					<span>+38 044 343 343 343</span>
+				</a>
+				<a href="#" class="phone-header__call-me-button">Передзвоніть мені</a>
 			</div>
+			<p class="header__message">Безкоштовна доставка по Україні</p>
+			<!-- ! languange change -->
+			<!-- 1. change language if another input was checked -->
+			<!-- 2. choosed language should be deleted from .lang-change__list -->
+			<!-- 3. if details has "open" attr, and click target != .lang-change__list menu should be closed -->
+			<details class="header__lang-change lang-change">
+				<summary class="lang-change__radios">
+					<input type="radio" name="lang" id="ukrainian" title="Укр" checked>
+					<input type="radio" name="lang" id="english" title="Eng">
+				</summary>
+				<ul class="lang-change__list">
+					<li class="lang-change__item"><label for="ukrainian" class="lang-change__label">Укр</label></li>
+					<li class="lang-change__item"><label for="english" class="lang-change__label">Eng</label></li>
+				</ul>
+			</details>
 		</div>
-		<!-- нижня частина шапки -->
-		<div class="header__bottom">
-			<div class="header__container header__container--bottom">
-				<!-- лого зазвичай є посиланням на головну -->
-				<a href="#" class="header__logo"><img src="icons/logo.svg" alt="Logo"></a>
-				<div class="header__menu menu">
-					<!-- обгортка меню, що буде з'являтись при натисненні на бургер -->
-					<nav class="menu__body">
-						<ul class="menu__list">
-							<li class="menu__item"><a href="#" class="menu__link">Каталог</a></li>
-							<li class="menu__item"><a href="#" class="menu__link">Персоналізація</a></li>
-							<li class="menu__item"><a href="#" class="menu__link">Популярне</a></li>
-							<li class="menu__item"><a href="#" class="menu__link">Допомога</a></li>
-							<li class="menu__item"><a href="#" class="menu__link">Про нас</a></li>
-						</ul>
-					</nav>
-				</div>
-				<div class="header__actions actions-header">
-					<!-- форма пошуку -->
-					<form action="#" class="actions-header__search search-header">
-						<input type="text" name="q" placeholder="Пошук" class="search-header__input">
-						<!-- при натисненні на кнопку відбувається пошуковий запит -->
-						<button type="submit" class="search-header__button">
-							<img src="icons/search.svg" alt="Search">
-						</button>
-					</form>
-					<!-- перехід на особистий профіль -->
-					<a href="#" class="actions-header__link">
-						<img src="icons/account.svg" alt="Account">
-					</a>
-					<!-- перехід в корзину -->
-					<a href="#" class="actions-header__link">
-						<img src="icons/basket.svg" alt="Basket">
-					</a>
-					<!-- Кнопка-бургер. При натисненні відкриває .menu__body -->
-					<button type="button" class="icon-burger"><span></span></button>
-				</div>
+		<div class="header__container bottom-header">
+			<a href="#" class="header__logo"><img src="icons/logo.svg" alt="Logo"></a>
+			<div class="header__menu menu">
+				<!-- wrapper to use with burger menu -->
+				<nav class="menu__body">
+					<ul class="menu__list">
+						<li class="menu__item"><a href="#" class="menu__link">Каталог</a></li>
+						<li class="menu__item"><a href="#" class="menu__link">Персоналізація</a></li>
+						<li class="menu__item"><a href="#" class="menu__link">Популярне</a></li>
+						<li class="menu__item"><a href="#" class="menu__link">Допомога</a></li>
+						<li class="menu__item"><a href="#" class="menu__link">Про нас</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="header__actions actions-header">
+				<!-- search field -->
+				<form action="#" class="actions-header__search search-header">
+					<input type="text" name="q" placeholder="Пошук" class="search-header__input">
+					<!-- !initialize search query when button is clicked -->
+					<button type="submit" class="search-header__button">
+						<img src="icons/search.svg" alt="Search">
+					</button>
+				</form>
+				<a href="#" class="actions-header__link">
+					<img src="icons/account.svg" alt="Account">
+				</a>
+				<a href="#" class="actions-header__link">
+					<img src="icons/basket.svg" alt="Basket">
+				</a>
+				<!-- Button for future burger. Opens .menu__body when clicked -->
+				<button type="button" class="icon-burger"><span></span></button>
 			</div>
 		</div>
 	</header>
-	<main class="page">
-		<section class="page__intro intro">
-
-			<!-- todo: тут буде відео, переробити відповідно -->
-			<!-- відео має починати програватись автоматично при завантаженні сторінки -->
-			<div class="intro__background">
-				<img src="img/index/intro/bg.png" alt="">
+	<main class="main">
+		<section class="main__intro intro">
+			<div class="intro__video-background">
+				<video autoplay muted loop>
+					<source src="video/" type="video/mp4">
+				</video>
 			</div>
-			<!-- кнопка може зупиняти/починати програвання відео -->
-			<div class="intro__play-button">
+			<!-- ! click on a button stops video playback -->
+			<button type="button" class="intro__play-button">
 				<span></span>
 				<span></span>
-			</div>
-
+			</button>
 			<div class="intro__container">
 				<div class="intro__content">
 					<h1 class="intro__title title title--large">Персоніфікація та унікальність.</h1>
@@ -104,112 +91,351 @@
 				</div>
 			</div>
 		</section>
-		<section class="page__index-catalog index-catalog">
+		<section class="main__index-catalog index-catalog">
 			<div class="index-catalog__container">
 				<h2 class="index-catalog__title title title--small">Укомплектуй свою команду</h2>
 				<div class="index-catalog__items">
-					<!-- product card -->
 					<div class="index-catalog__item item-index-catalog">
 						<a href="#" class="item-index-catalog__image-ibg">
-							<img src="img/index/index-catalog/product.png" alt="goods">
+							<img src="img/index/placeholder.png" alt="placeholder">
 						</a>
 						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
 					</div>
-					<!-- product card -->
 					<div class="index-catalog__item item-index-catalog">
 						<a href="#" class="item-index-catalog__image-ibg">
-							<img src="img/index/index-catalog/product.png" alt="goods">
+							<img src="img/index/placeholder.png" alt="placeholder">
 						</a>
 						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
 					</div>
-					<!-- product card -->
 					<div class="index-catalog__item item-index-catalog">
 						<a href="#" class="item-index-catalog__image-ibg">
-							<img src="img/index/index-catalog/product.png" alt="goods">
+							<img src="img/index/placeholder.png" alt="placeholder">
 						</a>
 						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
 					</div>
-					<!-- product card -->
 					<div class="index-catalog__item item-index-catalog">
 						<a href="#" class="item-index-catalog__image-ibg">
-							<img src="img/index/index-catalog/product.png" alt="goods">
+							<img src="img/index/placeholder.png" alt="placeholder">
 						</a>
 						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
 					</div>
-					<!-- product card -->
 					<div class="index-catalog__item item-index-catalog item-index-catalog--wide">
 						<a href="#" class="item-index-catalog__image-ibg">
-							<img src="img/index/index-catalog/product-wide.png" alt="goods">
+							<img src="img/index/placeholder.png" alt="placeholder">
 						</a>
 						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
 					</div>
-					<!-- product card -->
 					<div class="index-catalog__item item-index-catalog">
 						<a href="#" class="item-index-catalog__image-ibg">
-							<img src="img/index/index-catalog/product.png" alt="goods">
+							<img src="img/index/placeholder.png" alt="placeholder">
 						</a>
 						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
 					</div>
-					<!-- product card -->
 					<div class="index-catalog__item item-index-catalog">
 						<a href="#" class="item-index-catalog__image-ibg">
-							<img src="img/index/index-catalog/product.png" alt="goods">
+							<img src="img/index/placeholder.png" alt="placeholder">
 						</a>
 						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
 					</div>
-					<!-- product card -->
 					<div class="index-catalog__item item-index-catalog">
 						<a href="#" class="item-index-catalog__image-ibg">
-							<img src="img/index/index-catalog/product.png" alt="goods">
+							<img src="img/index/placeholder.png" alt="placeholder">
 						</a>
 						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
 					</div>
-					<!-- product card -->
 					<div class="index-catalog__item item-index-catalog">
 						<a href="#" class="item-index-catalog__image-ibg">
-							<img src="img/index/index-catalog/product.png" alt="goods">
+							<img src="img/index/placeholder.png" alt="placeholder">
 						</a>
 						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
 					</div>
-					<!-- product card -->
 					<div class="index-catalog__item item-index-catalog">
 						<a href="#" class="item-index-catalog__image-ibg">
-							<img src="img/index/index-catalog/product.png" alt="goods">
+							<img src="img/index/placeholder.png" alt="placeholder">
 						</a>
 						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
 					</div>
-					<!-- product card -->
 					<div class="index-catalog__item item-index-catalog">
 						<a href="#" class="item-index-catalog__image-ibg">
-							<img src="img/index/index-catalog/product.png" alt="goods">
+							<img src="img/index/placeholder.png" alt="placeholder">
 						</a>
 						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section class="page__advantages advantages">
+		<section class="main__advantages advantages">
 			<div class="advantages__container">
 				<div class="advantages__body">
 					<h2 class="advantages__title title title--large">
 						Пошив по індивідуальним замірам
+					</h2>
+					<div class="advantages__text">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+							labore
+							et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+							aliquip ex ea commodo consequat sed do eiusmod tempor incididunt ut labore et dolore magna aliquat
+							enim ad minim veniam consequat sed doeiusm.
+						</p>
+
+					</div>
+					<a href="#" class="advantages__link text-link">Читати більше</a>
+				</div>
+				<div class="advantages__image-ibg">
+					<img src="img/index/placeholder.png" alt="placeholder">
+				</div>
+			</div>
+		</section>
+		<section class="main__bestsellers bestsellers">
+			<div class="bestsellers__container">
+				<div class="bestsellers__header header-slider">
+					<h2 class="bestsellers__title title title--small">Бестселлери</h2>
+					<div class="bestsellers__buttons slider-buttons">
+						<!-- ! on click go to the next slide of .bestsellers__items -->
+						<button type="button" class="bestsellers__button-prev">
+							<img src="icons/arrow.svg" alt="previous slide">
+						</button>
+						<!-- ! on click go to the previous slide of .bestsellers__items -->
+						<button type="button" class="bestsellers__button-next">
+							<img src="icons/arrow.svg" alt="next slide">
+						</button>
+					</div>
+				</div>
+
+				<!-- ! slider: user should be able to move .bestsellers__item -->
+				<!-- slider wrapper -->
+				<div class="bestsellers__items slider">
+					<!-- moving part of the slider -->
+					<div class="bestsellers__wrapper">
+						<!-- slide template -->
+						<div class="bestsellers__item item-bestseller">
+							<a href="#" class="item-bestseller__image-ibg">
+								<img src="img/index/placeholder.png" alt="placeholder">
+							</a>
+							<a href="#" class="item-bestseller__link">Кітель шефа</a>
+							<a href="#" class="item-bestseller__link item-bestseller__link--price">2 540 грн.</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="main__features features">
+			<div class="features__container">
+				<h2 class="features__title title title--small">Відкривай світ Ms. Home. S. Uniform </h2>
+				<div class="features__items">
+					<div class="features__item item-feature">
+						<img class="item-feature__image" src="img/index/placeholder.png" alt="placeholder">
+						<div class="item-feature__body">
+							<a href="#" class="item-feature__title">Китель з персоніцікафією</a>
+							<a href="#" class="item-feature__button button">купити</a>
+						</div>
+					</div>
+					<div class="features__item item-feature">
+						<img class="item-feature__image" src="img/index/placeholder.png" alt="placeholder">
+						<div class="item-feature__body">
+							<a href="#" class="item-feature__title">Китель з персоніцікафією</a>
+							<a href="#" class="item-feature__button button">купити</a>
+						</div>
+					</div>
+					<div class="features__item item-feature">
+						<img class="item-feature__image" src="img/index/placeholder.png" alt="placeholder">
+						<div class="item-feature__body">
+							<a href="#" class="item-feature__title">Китель з персоніцікафією</a>
+							<a href="#" class="item-feature__button button">купити</a>
+						</div>
+					</div>
+					<div class="features__item item-feature">
+						<img class="item-feature__image" src="img/index/placeholder.png" alt="placeholder">
+						<div class="item-feature__body">
+							<a href="#" class="item-feature__title">Китель з персоніцікафією</a>
+							<a href="#" class="item-feature__button button">купити</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="main__advantages advantages">
+			<div class="advantages__container">
+				<div class="advantages__body">
+					<h2 class="advantages__title title title--large">
+						Лаконічний дизайн та якісний продукт.
 					</h2>
 					<p class="advantages__text">
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
 						et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
 						aliquip ex ea commodo consequat sed do eiusmod tempor incididunt ut labore et dolore magna aliquat
 						enim ad minim veniam consequat sed doeiusm.
-
 					</p>
-					<a href="#" class="advantages__link">Читати більше</a>
+					<a href="#" class="advantages__link text-link">Читати більше</a>
 				</div>
 				<div class="advantages__image-ibg">
-					<img src="img/index/advantages/placeholder.png" alt="placeholder">
+					<img src="img/index/placeholder.png" alt="placeholder">
+				</div>
+			</div>
+		</section>
+		<section class="main__social-feed social-feed">
+			<div class="social-feed__container">
+				<div class="social-feed__header header-slider">
+					<h2 class="social-feed__title title title--small">#mshomes.uniform</h2>
+					<div class="social-feed__buttons slider-buttons">
+						<!-- ! on click go to the next slide of .social-feed__items -->
+						<button type="button" class="social-feed__button-prev">
+							<img src="icons/arrow.svg" alt="previous slide">
+						</button>
+						<!-- ! on click go to the previuos slide of .social-feed__items -->
+						<button type="button" class="social-feed__button-next">
+							<img src="icons/arrow.svg" alt="next slide">
+						</button>
+					</div>
+				</div>
+				<!-- !slider -->
+				<div class="social-feed__items">
+					<div class="social-feed__wrapper">
+						<!-- slide template -->
+						<div class="social-feed__item item-feed">
+							<a href="#" class="item-feed__image-ibg">
+								<img src="img/index/placeholder.png" alt="placeholder">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="main__testimonials testimonials">
+			<div class="testimonials__container">
+				<div class="testimonials__header header-slider">
+					<h2 class="testimonials__title title title--small">Відгуки к лієнтів</h2>
+					<div class="testimonials__buttons slider-buttons">
+						<!-- ! on click go to the next slide of testimonials__items -->
+						<button type="button" class="testimonials__button-prev">
+							<img src="icons/arrow.svg" alt="previous slide">
+						</button>
+						<!-- ! on click go to the previuos slide of testimonials__items -->
+						<button type="button" class="testimonials__button-next">
+							<img src="icons/arrow.svg" alt="next slide">
+						</button>
+					</div>
+				</div>
+				<!-- !slider -->
+				<div class="testimonials__items">
+					<div class="testimonials__wrapper">
+						<!-- slide template -->
+						<div class="testimonials__item item-testimonial">
+							<a href="#" class="item-testimonial__image-ibg">
+								<img src="img/index/placeholder.png" alt="placeholder">
+							</a>
+							<div class="item-testimonial__body body-testimonial">
+								<p class="body-testimonial__person-name">Імʼя людини</p>
+								<div class="body-testimonial__text">
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit vero optio animi odio
+										doloribus quod iusto minima unde cum soluta, pariatur aspernatur cupiditate ratione
+										tempore eligendi quisquam nulla autem similique?
+									</p>
+								</div>
+								<a href="#" class="body-testimonial__link text-link">Instagaram</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
 	</main>
-	<footer class="footer"></footer>s
+	<footer class="footer">
+		<div class="footer__container">
+			<div class="footer__top">
+				<a href="#" class="footer__logo"><img src="icons/logo.svg" alt="Logo"></a>
+				<div class="footer__menu menu-footer">
+					<div class="menu-footer__column">
+						<h3 class="menu-footer__title">Продукція</h3>
+						<ul class="menu-footer__list">
+							<li class="menu-footer__item">
+								<a href="#" class="menu-footer__link">Персоналізація</a>
+							</li>
+							<li class="menu-footer__item">
+								<a href="#" class="menu-footer__link">Каталог</a>
+							</li>
+							<li class="menu-footer__item">
+								<a href="#" class="menu-footer__link">Популярне</a>
+							</li>
+						</ul>
+					</div>
+					<div class="menu-footer__column">
+						<h3 class="menu-footer__title">Інформація</h3>
+						<ul class="menu-footer__list">
+							<li class="menu-footer__item">
+								<a href="#" class="menu-footer__link">Про нас</a>
+							</li>
+							<li class="menu-footer__item">
+								<a href="#" class="menu-footer__link">Співпраця</a>
+							</li>
+							<li class="menu-footer__item">
+								<a href="#" class="menu-footer__link">Доставка і оплата</a>
+							</li>
+							<li class="menu-footer__item">
+								<a href="#" class="menu-footer__link">Питання та відповіді</a>
+							</li>
+							<li class="menu-footer__item">
+								<a href="#" class="menu-footer__link">Договір публічної оферти</a>
+							</li>
+							<li class="menu-footer__item">
+								<a href="#" class="menu-footer__link">Розмірна сітка</a>
+							</li>
+						</ul>
+					</div>
+					<div class="menu-footer__column">
+						<h3 class="menu-footer__title">Контакти</h3>
+						<address>
+							<ul class="menu-footer__list">
+								<li class="menu-footer__item">
+									<a href="mailto:abcd@abc.com" class="menu-footer__link">abcd@abc.com</a>
+								</li>
+								<li class="menu-footer__item">
+									<a href="tel:38044444444" class="menu-footer__link">+ 38 044 44 44 44</a>
+								</li>
+								<li class="menu-footer__item">
+									м. Київ вул. Хрещатик, 24
+								</li>
+								<li class="menu-footer__item">
+									пн. - пт. 10.00 - 18. 00
+								</li>
+							</ul>
+						</address>
+					</div>
+				</div>
+				<div class="footer__newsletter newsletter-footer">
+					<h3 class="newsletter-footer__title">Підпишись</h3>
+					<p class="newsletter-footer__subtitle">Отримай першим інформацію про наші оновлення</p>
+					<form action="#" method="post" class="newsletter-footer__form form-footer">
+						<div class="form-footer__subscribe">
+							<input type="email" name="user-email" value="" placeholder="введіть ваш e-mail"
+								class="form-footer__input">
+							<!-- ! if user submits a form with checking the checkbox - display a message -->
+							<button type="submit" class="form-footer__button">Підписатися</button>
+						</div>
+						<div class="form-footer__data-usage">
+							<input id="personal-data" class="form-footer__checkbox" type="checkbox" value="true"
+								name="personal-data" required>
+							<label for="personal-data" class="form-footer__label">
+								<span>
+									Даю згоду на обробку моїх персональних даних. Про мету обробки персональних даних
+									проінформований(а)
+								</span>
+							</label>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="footer__bottom">
+				<p class="footer__copyright">©2023 Всі права захищені</p>
+				<!-- ! go to the top of the page on click -->
+				<button type="button" class="footer__button-up">
+					<span>Вгору</span>
+					<img src="icons/arrow.svg" alt="go up">
+				</button>
+			</div>
+		</div>
+	</footer>
 </body>
 
 </html>

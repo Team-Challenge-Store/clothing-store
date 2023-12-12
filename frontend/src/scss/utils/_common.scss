@@ -1,0 +1,50 @@
+//=============================================================================
+
+//=============================================================================
+.title {
+	color: #505d68;
+	font-weight: 700;
+	line-height: 1.8;
+	&--large {
+		font-size: 36px;
+	}
+	&--small {
+		font-size: 24px;
+	}
+}
+.button {
+	display: inline-block;
+	min-width: 118px;
+	padding: 10px;
+	border: 1px solid #45494b;
+
+	background-color: #f2f5f7;
+	color: #45494b;
+	text-align: center;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+.text-link {
+	// class for links like "read more"
+	color: #505d68;
+	text-decoration-line: underline;
+}
+//=============================================================================
+.header-slider {
+	// class for different sections with slider arrows on top (title + control arrows)
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px; // so content doesn't stick together on smaller screens
+}
+.slider-buttons {
+	display: flex;
+	gap: 34px;
+
+	button {
+		padding: 5px 10px;
+		&:nth-child(2) {
+			transform: rotate(-180deg);
+		}
+	}
+}

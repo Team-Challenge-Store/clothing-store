@@ -1,0 +1,29 @@
+.bestsellers {
+	&__container {
+		display: grid;
+		gap: 26px;
+	}
+	&__item {
+		width: 365px;
+	}
+}
+.item-bestseller {
+	display: grid;
+	justify-items: start;
+	gap: 8px;
+
+	&__image-ibg {
+		width: 100%;
+		padding-top: 85.479452%; /* 312/365 */
+	}
+	&__link {
+		color: rgba(88, 88, 88, 0.8);
+		font-family: Inter;
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 1.5;
+		&--price {
+			color: rgba(0, 0, 0, 0.8);
+		}
+	}
+}

@@ -1,0 +1,140 @@
+.footer {
+	background-color: #f2f2f2;
+	font-size: 12px;
+	&__container {
+		padding-top: 16px;
+		padding-bottom: 26px;
+		display: grid;
+		row-gap: 25px;
+	}
+	&__top {
+		display: grid;
+		justify-content: space-between;
+		grid-template-columns: auto 1fr auto;
+		column-gap: 72px;
+		align-items: start;
+	}
+	&__logo {
+		img {
+			max-width: 100%;
+		}
+	}
+	&__menu {
+		display: grid;
+		grid-template-columns: repeat(3, max-content);
+		align-items: start;
+		column-gap: 72px;
+	}
+	&__bottom {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+	}
+	&__button-up {
+		display: flex;
+		align-items: center;
+		gap: 18px;
+
+		span {
+			color: #505d68;
+			font-size: 14px;
+		}
+		img {
+			width: 24px;
+			height: 24px;
+			transform: rotate(90deg);
+		}
+	}
+}
+.menu-footer {
+	&__column {
+		display: grid;
+		row-gap: 12px;
+	}
+	&__title {
+		font-size: 14px;
+		font-weight: 700;
+	}
+	&__list {
+		display: grid;
+		row-gap: 8px;
+	}
+	&__link {
+		display: inline-block;
+	}
+	address {
+		font-style: normal;
+	}
+}
+.newsletter-footer {
+	max-width: 320px;
+	&__title {
+		font-size: 14px;
+		font-weight: 700;
+		&:not(:last-child) {
+			margin-bottom: 12px;
+		}
+	}
+	&__subtitle {
+		&:not(:last-child) {
+			margin-bottom: 8px;
+		}
+	}
+}
+.form-footer {
+	display: grid;
+	row-gap: 8px;
+	&__subscribe {
+		display: flex;
+	}
+	&__input {
+		flex-grow: 1;
+		width: 100%;
+		padding: 10px;
+
+		color: #000;
+		border: 1px solid #a1aeb7;
+
+		&::placeholder {
+			color: #a1aeb7;
+		}
+	}
+	&__button {
+		padding: 10px;
+		background-color: #a1aeb7;
+		color: #fff;
+		font-weight: 700;
+		text-align: center;
+	}
+	&__data-usage {
+		position: relative;
+	}
+	&__checkbox {
+		// * removing the origingal checkbox
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 0;
+		opacity: 0;
+		visibility: hidden;
+		// * when the label is clicked, styles apply
+		&:checked + .form-footer__label::before {
+			background-color: #505d68; // * for test purposes, change later
+		}
+	}
+	&__label {
+		display: flex;
+		align-items: flex-start;
+		column-gap: 12px;
+		font-size: 10px;
+		cursor: pointer;
+		// * custom checkbox styles
+		&::before {
+			content: "";
+			flex-shrink: 0;
+			width: 14px;
+			height: 14px;
+			border: 1px solid #a1aeb7;
+		}
+	}
+}

@@ -1,20 +1,27 @@
-// підключення шрифтів
-@import url("https://fonts.googleapis.com/css?family=Ubuntu:regular,500,700&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Inter:regular,500&display=swap");
+@import "./utils/reset";
+@import "./utils/fonts";
+@import "./utils/common";
+
+@import "./components/header";
+@import "./components/footer";
+
+@import "./index";
+
+@import "./components/catalog";
+@import "./components/breadcrumbs";
+@import "./components/sort";
+@import "./components/filter";
+@import "./components/filter-selection";
+@import "./components/price";
+@import "./components/checkbox";
+@import "./components/selected";
+@import "./components/goods";
+@import "./components/pagination";
+
 body {
-	font-family: "Ubuntu";
-	color: #a1aeb7;
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 1.5; /* 24px */
+	font-family: "Ubuntu", sans-serif;
 }
 
-@import "_reset";
-@import "_common";
-@import "_header";
-@import "_index";
-
-// обмежуючий контейнер
 [class*="__container"] {
 	padding-left: 72px;
 	padding-right: 72px;
