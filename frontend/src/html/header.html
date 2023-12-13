@@ -1,0 +1,59 @@
+<header class="header">
+	<div class="header__container top-header">
+		<div class="header__phone phone-header">
+			<a href="tel:+3800000000" class="phone-header__link">
+				<img src="img/icons/phone.svg" alt="Phone">
+				<span>+38 044 343 343 343</span>
+			</a>
+			<a href="#" class="phone-header__call-me-button">Передзвоніть мені</a>
+		</div>
+		<p class="header__message">Безкоштовна доставка по Україні</p>
+		<!-- ! languange change -->
+		<!-- 1. change language if another input was checked -->
+		<!-- 2. choosed language should be deleted from .lang-change__list -->
+		<!-- 3. if details has "open" attr, and click target != .lang-change__list menu should be closed -->
+		<details class="header__lang-change lang-change">
+			<summary class="lang-change__radios">
+				<input type="radio" name="lang" id="ukrainian" title="Укр" checked>
+				<input type="radio" name="lang" id="english" title="Eng">
+			</summary>
+			<ul class="lang-change__list">
+				<li class="lang-change__item"><label for="ukrainian" class="lang-change__label">Укр</label></li>
+				<li class="lang-change__item"><label for="english" class="lang-change__label">Eng</label></li>
+			</ul>
+		</details>
+	</div>
+	<div class="header__container bottom-header">
+		<a href="../index.html" class="header__logo"><img src="img/icons/logo.svg" alt="Logo"></a>
+		<div class="header__menu menu">
+			<!-- wrapper to use with burger menu -->
+			<nav class="menu__body">
+				<ul class="menu__list">
+					<li class="menu__item"><a href="../catalog.html" class="menu__link">Каталог</a></li>
+					<li class="menu__item"><a href="#" class="menu__link">Персоналізація</a></li>
+					<li class="menu__item"><a href="#" class="menu__link">Популярне</a></li>
+					<li class="menu__item"><a href="#" class="menu__link">Допомога</a></li>
+					<li class="menu__item"><a href="#" class="menu__link">Про нас</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="header__actions actions-header">
+			<!-- search field -->
+			<form action="#" class="actions-header__search search-header">
+				<input type="text" name="q" placeholder="Пошук" class="search-header__input">
+				<!-- !initialize search query when button is clicked -->
+				<button type="submit" class="search-header__button">
+					<img src="img/icons/search.svg" alt="Search">
+				</button>
+			</form>
+			<a href="#" class="actions-header__link">
+				<img src="img/icons/account.svg" alt="Account">
+			</a>
+			<a href="#" class="actions-header__link">
+				<img src="img/icons/basket.svg" alt="Basket">
+			</a>
+			<!-- Button for future burger. Opens .menu__body when clicked -->
+			<button type="button" class="icon-burger"><span></span></button>
+		</div>
+	</div>
+</header>

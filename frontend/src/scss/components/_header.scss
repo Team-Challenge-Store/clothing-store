@@ -1,0 +1,176 @@
+.header {
+	// fixed positioning
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 50;
+	width: 100%;
+	// majority of text is 12px
+	font-size: 12px;
+	&__container {
+		// these are common for top and bottom parts
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 10px 20px; // content doesn't stick together
+		min-height: 48px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	.top-header {
+		background: #e8e8e8;
+	}
+	.bottom-header {
+		min-height: 64px;
+		background-color: #fff;
+		.header__logo {
+			flex-shrink: 0;
+			img {
+				max-width: 100%;
+				max-height: 40px;
+			}
+		}
+	}
+}
+.phone-header {
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+	&__link {
+		display: flex;
+		align-items: center;
+		column-gap: 8px;
+	}
+}
+// * language change dropdown menu
+.lang-change {
+	position: relative;
+	min-width: 49px;
+	&[open] {
+		z-index: 5;
+	}
+	&[open] &__list {
+		opacity: 1;
+	}
+	// covers unclickable input, so the dropdown menu opens no matter where the user has ckicked
+	&__radios::before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		background: transparent;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	// if <details> has "open" attr, rotate an arrow
+	&[open] &__radios:after {
+		transform: rotate(180deg);
+	}
+	&__radios {
+		position: relative;
+		padding: 8px 0;
+
+		counter-reset: radios;
+		cursor: pointer;
+		list-style: none;
+		&::-webkit-details-marker {
+			display: none;
+		}
+		// dropdown arrow styles
+		&:after {
+			content: "▼";
+			display: inline-block;
+			position: absolute;
+			right: 0;
+			top: 12px; // (30px - 6px) / 2 = 12px
+			max-height: 6px;
+			font-size: 6px;
+			color: #787676;
+			transform-origin: center;
+			transition: transform ease-in-out 100ms;
+		}
+		&:focus {
+			outline: none;
+		}
+		// * visual change of a selected language
+		input[type="radio"]:checked {
+			display: inline;
+			color: #678193;
+			font-weight: 500;
+			display: block;
+		}
+		input[type="radio"] {
+			appearance: none;
+			display: none;
+		}
+		input[type="radio"]:after {
+			content: attr(title);
+			display: inline;
+		}
+	}
+	&__list {
+		//  dropdown menu itself
+		position: absolute;
+		left: 0;
+		top: calc(100% + 5px);
+		width: 100%;
+		box-sizing: border-box;
+		background-color: #fff;
+		border: 1px solid rgba(103, 129, 147, 0.15);
+	}
+	&__item {
+		transition: all 300ms ease;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #678193;
+				color: #fff;
+			}
+		}
+	}
+	&__label {
+		display: flex;
+		width: 100%;
+		padding: 10px;
+		cursor: pointer;
+	}
+}
+// navigation menu
+.menu {
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 24px;
+	}
+}
+// search field + navigation + burger
+.actions-header {
+	display: flex;
+	column-gap: 24px;
+}
+.search-header {
+	position: relative;
+	flex-shrink: 0;
+	display: flex;
+	max-width: 147px;
+	// underline styles
+	padding-bottom: 4px;
+	&::before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(161, 174, 183, 0.63);
+	}
+	&__input {
+		width: 100%;
+		padding-left: 12px;
+		padding-right: 8px;
+	}
+}
+.icon-burger {
+	@media (min-width: 768px) {
+		display: none;
+	}
+}

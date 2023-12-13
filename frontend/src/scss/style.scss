@@ -1,5 +1,7 @@
 @import "./utils/reset";
 @import "./utils/fonts";
+@import "./utils/base";
+@import "./utils/common";
 
 @import "./components/catalog";
 @import "./components/breadcrumbs";
@@ -12,7 +14,17 @@
 @import "./components/goods";
 @import "./components/pagination";
 
-body{
-    font-family: "Ubuntu", sans-serif;
-}
+@import "./components/header";
+@import "./components/footer";
+@import "./components/index/index";
 
+body {
+	font-family: "Ubuntu", sans-serif;
+	color: #a1aeb7;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.5; /* 24px */
+	// ? add common styles for text on all pages ?
+	// * these styles apply for header, footer, and the most of the text
+}
