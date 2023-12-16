@@ -1,0 +1,18 @@
+.advantages {
+	&__container {
+		display: grid;
+		grid-template-columns: 320px 1fr;
+		justify-content: space-between;
+		gap: 64px;
+	}
+	&__title {
+		line-height: 1.25; /* 45/36 */
+		&:not(:last-child) {
+			margin-bottom: 28px;
+		}
+	}
+	&__image-ibg {
+		align-self: start; // if there is a bigger text, the image stays on it's place
+		padding-top: 63.829787%; // 480/752 - height/width
+	}
+}

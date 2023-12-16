@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="uk">
-    <!-- Підключення head. На кожній сторінці змінювати title -->
-    @@include('html/head.html', {
-        "title": "Каталог" 
-    })
+<!-- Підключення head. На кожній сторінці змінювати title -->
+@@include('html/head.html', {
+"title": "Каталог"
+})
+
 <body>
-    <!-- @@include('html/header.html',{}) -->
-    <main class="catalog">
-        <div class="catalog__header">
-            @@include('html/breadcrums.html', {})
-            <div class="catalog__header-params params">
-                @@include('html/params-selected.html', {})
-                @@include('html/params-sort.html', {})
-            </div>
-        </div>
+	@@include('html/header.html',{})
+	<main class="catalog">
+		<div class="catalog__header">
+			@@include('html/breadcrums.html', {})
+			<div class="catalog__header-params params">
+				@@include('html/params-selected.html', {})
+				@@include('html/params-sort.html', {})
+			</div>
+		</div>
 
-        <div class="goods">
-            @@include('html/goods-filter.html', {})
-            <div id="goods-list" class="goods__list">
-                <!-- тут цикл по карткам -->
-                @@include('html/goods-cards.html', {}) <!-- Вся стилізація карток, підключила для прикладу-->
-            </div>
-            @@include('html/goods-btn-load-more.html', {})
-        </div>
+		<div class="goods">
+			@@include('html/goods-filter.html', {})
+			<div id="goods-list" class="goods__list">
+				<!-- тут цикл по карткам -->
+				@@include('html/goods-cards.html', {}) <!-- Вся стилізація карток, підключила для прикладу-->
+			</div>
+			@@include('html/goods-btn-load-more.html', {})
+		</div>
 
-        @@include('html/pagination.html', {})
-    </main>
-    <!-- @@include('html/footer.html',{}) -->
-    <script async src="./js/script.js"></script>
+		@@include('html/pagination.html', {})
+	</main>
+	@@include('html/footer.html',{})
+	<script async src="./js/script.js"></script>
 </body>
+
 </html>

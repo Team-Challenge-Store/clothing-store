@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+@@include('html/head.html', {
+"title": "Головна"
+})
+
+<body>
+	@@include('html/header.html',{})
+	<main class="main">
+		<section class="main__intro intro">
+			<div class="intro__video-background">
+				<video autoplay muted loop>
+					<source src="video/" type="video/mp4">
+				</video>
+			</div>
+			<!-- ! click on a button stops video playback -->
+			<button type="button" class="intro__play-button">
+				<span></span>
+				<span></span>
+			</button>
+			<div class="intro__container">
+				<div class="intro__content">
+					<h1 class="intro__title title title--large">Персоніфікація та унікальність.</h1>
+					<p class="intro__text">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+						et dolore magna aliqua. Ut enim ad minim
+					</p>
+					<a href="#" class="intro__button button">купити</a>
+				</div>
+			</div>
+		</section>
+		<section class="main__index-catalog index-catalog">
+			<div class="index-catalog__container">
+				<h2 class="index-catalog__title title title--small">Укомплектуй свою команду</h2>
+				<div class="index-catalog__items">
+					<div class="index-catalog__item item-index-catalog">
+						<a href="#" class="item-index-catalog__image-ibg">
+							<img src="img/index/placeholder.png" alt="placeholder">
+						</a>
+						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
+					</div>
+					<div class="index-catalog__item item-index-catalog">
+						<a href="#" class="item-index-catalog__image-ibg">
+							<img src="img/index/placeholder.png" alt="placeholder">
+						</a>
+						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
+					</div>
+					<div class="index-catalog__item item-index-catalog">
+						<a href="#" class="item-index-catalog__image-ibg">
+							<img src="img/index/placeholder.png" alt="placeholder">
+						</a>
+						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
+					</div>
+					<div class="index-catalog__item item-index-catalog">
+						<a href="#" class="item-index-catalog__image-ibg">
+							<img src="img/index/placeholder.png" alt="placeholder">
+						</a>
+						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
+					</div>
+					<div class="index-catalog__item item-index-catalog item-index-catalog--wide">
+						<a href="#" class="item-index-catalog__image-ibg">
+							<img src="img/index/placeholder.png" alt="placeholder">
+						</a>
+						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
+					</div>
+					<div class="index-catalog__item item-index-catalog">
+						<a href="#" class="item-index-catalog__image-ibg">
+							<img src="img/index/placeholder.png" alt="placeholder">
+						</a>
+						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
+					</div>
+					<div class="index-catalog__item item-index-catalog">
+						<a href="#" class="item-index-catalog__image-ibg">
+							<img src="img/index/placeholder.png" alt="placeholder">
+						</a>
+						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
+					</div>
+					<div class="index-catalog__item item-index-catalog">
+						<a href="#" class="item-index-catalog__image-ibg">
+							<img src="img/index/placeholder.png" alt="placeholder">
+						</a>
+						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
+					</div>
+					<div class="index-catalog__item item-index-catalog">
+						<a href="#" class="item-index-catalog__image-ibg">
+							<img src="img/index/placeholder.png" alt="placeholder">
+						</a>
+						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
+					</div>
+					<div class="index-catalog__item item-index-catalog">
+						<a href="#" class="item-index-catalog__image-ibg">
+							<img src="img/index/placeholder.png" alt="placeholder">
+						</a>
+						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
+					</div>
+					<div class="index-catalog__item item-index-catalog">
+						<a href="#" class="item-index-catalog__image-ibg">
+							<img src="img/index/placeholder.png" alt="placeholder">
+						</a>
+						<a href="#" class="item-index-catalog__link">Кітелі шефа</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="main__advantages advantages">
+			<div class="advantages__container">
+				<div class="advantages__body">
+					<h2 class="advantages__title title title--large">
+						Пошив по індивідуальним замірам
+					</h2>
+					<div class="advantages__text">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+							labore
+							et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+							aliquip ex ea commodo consequat sed do eiusmod tempor incididunt ut labore et dolore magna aliquat
+							enim ad minim veniam consequat sed doeiusm.
+						</p>
+
+					</div>
+					<a href="#" class="advantages__link text-link">Читати більше</a>
+				</div>
+				<div class="advantages__image-ibg">
+					<img src="img/index/placeholder.png" alt="placeholder">
+				</div>
+			</div>
+		</section>
+		<section class="main__bestsellers bestsellers">
+			<div class="bestsellers__container">
+				<div class="bestsellers__header header-slider">
+					<h2 class="bestsellers__title title title--small">Бестселлери</h2>
+					<div class="bestsellers__buttons slider-buttons">
+						<!-- ! on click go to the next slide of .bestsellers__items -->
+						<button type="button" class="bestsellers__button-prev">
+							<img src="img/icons/arrow.svg" alt="previous slide">
+						</button>
+						<!-- ! on click go to the previous slide of .bestsellers__items -->
+						<button type="button" class="bestsellers__button-next">
+							<img src="img/icons/arrow.svg" alt="next slide">
+						</button>
+					</div>
+				</div>
+
+				<!-- ! slider: user should be able to move .bestsellers__item -->
+				<!-- slider wrapper -->
+				<div class="bestsellers__items slider">
+					<!-- moving part of the slider -->
+					<div class="bestsellers__wrapper">
+						<!-- slide template -->
+						<div class="bestsellers__item item-bestseller">
+							<a href="#" class="item-bestseller__image-ibg">
+								<img src="img/index/placeholder.png" alt="placeholder">
+							</a>
+							<a href="#" class="item-bestseller__link">Кітель шефа</a>
+							<a href="#" class="item-bestseller__link item-bestseller__link--price">2 540 грн.</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="main__features features">
+			<div class="features__container">
+				<h2 class="features__title title title--small">Відкривай світ Ms. Home. S. Uniform </h2>
+				<div class="features__items">
+					<div class="features__item item-feature">
+						<img class="item-feature__image" src="img/index/placeholder.png" alt="placeholder">
+						<div class="item-feature__body">
+							<a href="#" class="item-feature__title">Китель з персоніцікафією</a>
+							<a href="#" class="item-feature__button button">купити</a>
+						</div>
+					</div>
+					<div class="features__item item-feature">
+						<img class="item-feature__image" src="img/index/placeholder.png" alt="placeholder">
+						<div class="item-feature__body">
+							<a href="#" class="item-feature__title">Китель з персоніцікафією</a>
+							<a href="#" class="item-feature__button button">купити</a>
+						</div>
+					</div>
+					<div class="features__item item-feature">
+						<img class="item-feature__image" src="img/index/placeholder.png" alt="placeholder">
+						<div class="item-feature__body">
+							<a href="#" class="item-feature__title">Китель з персоніцікафією</a>
+							<a href="#" class="item-feature__button button">купити</a>
+						</div>
+					</div>
+					<div class="features__item item-feature">
+						<img class="item-feature__image" src="img/index/placeholder.png" alt="placeholder">
+						<div class="item-feature__body">
+							<a href="#" class="item-feature__title">Китель з персоніцікафією</a>
+							<a href="#" class="item-feature__button button">купити</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="main__advantages advantages">
+			<div class="advantages__container">
+				<div class="advantages__body">
+					<h2 class="advantages__title title title--large">
+						Лаконічний дизайн та якісний продукт.
+					</h2>
+					<p class="advantages__text">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+						et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+						aliquip ex ea commodo consequat sed do eiusmod tempor incididunt ut labore et dolore magna aliquat
+						enim ad minim veniam consequat sed doeiusm.
+					</p>
+					<a href="#" class="advantages__link text-link">Читати більше</a>
+				</div>
+				<div class="advantages__image-ibg">
+					<img src="img/index/placeholder.png" alt="placeholder">
+				</div>
+			</div>
+		</section>
+		<section class="main__social-feed social-feed">
+			<div class="social-feed__container">
+				<div class="social-feed__header header-slider">
+					<h2 class="social-feed__title title title--small">#mshomes.uniform</h2>
+					<div class="social-feed__buttons slider-buttons">
+						<!-- ! on click go to the next slide of .social-feed__items -->
+						<button type="button" class="social-feed__button-prev">
+							<img src="img/icons/arrow.svg" alt="previous slide">
+						</button>
+						<!-- ! on click go to the previuos slide of .social-feed__items -->
+						<button type="button" class="social-feed__button-next">
+							<img src="img/icons/arrow.svg" alt="next slide">
+						</button>
+					</div>
+				</div>
+				<!-- !slider -->
+				<div class="social-feed__items">
+					<div class="social-feed__wrapper">
+						<!-- slide template -->
+						<div class="social-feed__item item-feed">
+							<a href="#" class="item-feed__image-ibg">
+								<img src="img/index/placeholder.png" alt="placeholder">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="main__testimonials testimonials">
+			<div class="testimonials__container">
+				<div class="testimonials__header header-slider">
+					<h2 class="testimonials__title title title--small">Відгуки к лієнтів</h2>
+					<div class="testimonials__buttons slider-buttons">
+						<!-- ! on click go to the next slide of testimonials__items -->
+						<button type="button" class="testimonials__button-prev">
+							<img src="img/icons/arrow.svg" alt="previous slide">
+						</button>
+						<!-- ! on click go to the previuos slide of testimonials__items -->
+						<button type="button" class="testimonials__button-next">
+							<img src="img/icons/arrow.svg" alt="next slide">
+						</button>
+					</div>
+				</div>
+				<!-- !slider -->
+				<div class="testimonials__items">
+					<div class="testimonials__wrapper">
+						<!-- slide template -->
+						<div class="testimonials__item item-testimonial">
+							<a href="#" class="item-testimonial__image-ibg">
+								<img src="img/index/placeholder.png" alt="placeholder">
+							</a>
+							<div class="item-testimonial__body body-testimonial">
+								<p class="body-testimonial__person-name">Імʼя людини</p>
+								<div class="body-testimonial__text">
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit vero optio animi odio
+										doloribus quod iusto minima unde cum soluta, pariatur aspernatur cupiditate ratione
+										tempore eligendi quisquam nulla autem similique?
+									</p>
+								</div>
+								<a href="#" class="body-testimonial__link text-link">Instagaram</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	@@include('html/footer.html',{})
+</body>
+
+</html>

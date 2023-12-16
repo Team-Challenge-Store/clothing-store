@@ -1,0 +1,22 @@
+@import "./components/index/intro";
+@import "./components/index/index-catalog";
+@import "./components/index/advantages";
+@import "./components/index/bestsellers";
+@import "./components/index/social-feed";
+@import "./components/index/features";
+@import "./components/index/testimonials";
+
+[class*="__container"] {
+	padding-left: 72px;
+	padding-right: 72px;
+}
+
+.main {
+	padding-top: 112px;
+	& > *:not(:last-child) {
+		margin-bottom: 40px;
+	}
+	&:not(:last-child) {
+		margin-bottom: 40px;
+	}
+}
